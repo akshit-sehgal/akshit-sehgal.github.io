@@ -1,0 +1,50 @@
+body, form, div, iframe, textarea, table, tr, td {
+    border: 0px none;
+    margin: 0px;
+    outline: none;
+    padding: 0px;
+}
+#actions, #editor {
+    border-radius: 5px;
+    overflow: auto;
+}
+body {
+    font-family: Arial;
+    font-size: 13px;
+    margin: 0px;
+    overflow: hidden;
+}
+.bool {
+    width: 30px;
+}
+button {
+    background-color: lightgray;
+    border-radius: 5px;
+    margin: 5px auto;
+}
+button:hover {
+    cursor: pointer;
+}
+#actions button:hover {
+    background-color: lightblue;
+}
+fieldset {
+    border: 1px solid lightgray;
+    margin: 10px auto;
+}
+label, legend {
+    color: brown;
+}
+input[type="radio"], input[type="checkbox"] {
+    width: 15px;
+}
+input[type="radio"]:hover, input[type="checkbox"]:hover {
+    cursor: pointer;
+}
+input, select {
+    margin: 5px auto;
+    width: 100px;
+}
+.blackButton {
+    border-radius: 5px; background-color: black; color: white; cursor: pointer; float: right; margin: auto 5px; z-index: 1;
+}
