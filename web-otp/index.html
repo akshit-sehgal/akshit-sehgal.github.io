@@ -107,7 +107,7 @@
       <div id="verify-msg"></div>
     </section>
     <section class="msg-section">
-      <div>Send an SMS to your mobile from another mobile in the following format:</div>
+      <div>Send an SMS to your mobile from another mobile or SMS service in the following format:</div>
       <div class="msg">For verification, your OTP is: 9876<br />@akshitsehgal.com #9876</div>
     </section>
   </div>
@@ -120,7 +120,6 @@
 
       function verificationMessage() {
         let msg = 'Mobile Verified Successfully';
-        let incorrect = false;
         verifyMsgHolder.classList.remove('error');
         if (input.value !== '9876') {
           msg = 'Incorrect OTP';
@@ -128,9 +127,7 @@
           incorrect = true;
         }
         verifyMsgHolder.innerText = msg;
-        if (!incorrect) {
-          ac.abort();
-        }
+        ac.abort();
       }
 
       if ('OTPCredential' in window) {
