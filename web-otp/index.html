@@ -105,7 +105,7 @@
     <section class="otp-section">
       <div class="heading">Verify your Mobile Number</div>
       <div class="mob-no">+91-XXXXXXXXXX</div>
-      <div>Enter OTP (XXXX)</div>
+      <div id="enter-otp-lbl">Enter OTP (XXXX)</div>
       <input id="otp-input" type="text" inputmode="numeric" pattern="\d{6}" autocomplete="one-time-code" required />
       <button id="verify-btn">Verify</button>
       <div id="verify-msg"></div>
@@ -120,17 +120,27 @@
       const verifyMsgHolder = document.getElementById('verify-msg');
       const input = document.getElementById('otp-input');
       const verifyBtn = document.getElementById('verify-btn');
+      const enterOtpLbl = document.getElementById('enter-otp-lbl');
+      const msgSection = document.querySelector('.msg-section');
       const ac = new AbortController();
 
       function verificationMessage() {
         let msg = 'Mobile Verified Successfully';
+        let correct = true;
         verifyMsgHolder.classList.remove('error');
         if (input.value !== '9876') {
           msg = 'Incorrect OTP';
           verifyMsgHolder.classList.add('error');
+          correct = false;
         }
         verifyMsgHolder.innerText = msg;
-        ac.abort();
+        if (correct) {
+          input.style.display = 'none';
+          verifyBtn.style.display = 'none';
+          enterOtpLbl.style.display = 'none';
+          msgSection.style.display = 'none';
+          ac.abort();
+        }
       }
       verifyBtn.onclick = verificationMessage;
       if ('OTPCredential' in window) {
@@ -141,7 +151,7 @@
           input.value = otp.code;
           verificationMessage();
         }).catch(function (e) {
-            console.log(e);
+          console.log(e);
         });
       }
 
