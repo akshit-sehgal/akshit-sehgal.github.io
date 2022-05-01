@@ -1,5 +1,55 @@
 <!DOCTYPE html>
 <html>
-  <head></head>
-  <body>Hello</body>
+
+<head>
+  <title>Web OTP Demo</title>
+  <style type="text/css">
+    *,
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div>Verify your mobile number: </div>
+  <div>+91-XXXXXXXXXX</div>
+  <input id="otp-input" type="text" inputmode="numeric" pattern="\d{6}" autocomplete="one-time-code" required />
+  <button id="verify-btn" type="button">Verify</button>
+  <div>Send the following SMS to your mobile phone from another mobile</div>
+  <div>Your OTP is: 9876</div>
+  <div>@akshitsehgal.com #9876</div>
+  <div id="verify-msg"></div>
+  <script type="application/javascript">
+    window.addEventListener('DOMContentLoaded', e => {
+      const verifyMsgHolder = document.getElementById('verify-msg');
+      const input = document.getElementById('otp-input');
+      const verifyBtn = document.getElementById('verify-btn')
+      function verificationMessage() {
+        let msg = 'OTP Verified';
+        if (input.value !== '9876') {
+          msg = 'Incorrect OTP';
+        }
+        verifyMsgHolder.innerText = msg;
+        ac.abort();
+      }
+      if ('OTPCredential' in window) {
+        const ac = new AbortController();
+        verifyBtn.onclick = verificationMessage;
+        navigator.credentials.get({
+          otp: { transport: ['sms'] },
+          signal: ac.signal
+        }).then(function (otp) {
+          input.value = otp.code;
+          verificationMessage();
+        }).catch(function (e) {
+          alert(e);
+        });
+      }
+    });
+  </script>
+</body>
+
 </html>
