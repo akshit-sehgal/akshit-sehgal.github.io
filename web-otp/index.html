@@ -61,11 +61,15 @@
 
     #verify-btn {
       display: inline-block;
+      border: none;
       border-radius: 8px;
       background-color: #1E88E5;
       color: #fff;
-      padding: 6px 12px;
+      padding: 8px 12px;
       margin-bottom: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      outline: none;
     }
 
     #verify-msg {
@@ -103,7 +107,7 @@
       <div class="mob-no">+91-XXXXXXXXXX</div>
       <div>Enter OTP (XXXX)</div>
       <input id="otp-input" type="text" inputmode="numeric" pattern="\d{6}" autocomplete="one-time-code" required />
-      <div id="verify-btn">Verify</div>
+      <button id="verify-btn">Verify</button>
       <div id="verify-msg"></div>
     </section>
     <section class="msg-section">
@@ -128,9 +132,8 @@
         verifyMsgHolder.innerText = msg;
         ac.abort();
       }
-
+      verifyBtn.onclick = verificationMessage;
       if ('OTPCredential' in window) {
-        verifyBtn.onclick = verificationMessage;
         navigator.credentials.get({
           otp: { transport: ['sms'] },
           signal: ac.signal
@@ -138,7 +141,7 @@
           input.value = otp.code;
           verificationMessage();
         }).catch(function (e) {
-            alert(e);
+            console.log(e);
         });
       }
 
