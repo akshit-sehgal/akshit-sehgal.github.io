@@ -124,7 +124,6 @@
         if (input.value !== '9876') {
           msg = 'Incorrect OTP';
           verifyMsgHolder.classList.add('error');
-          incorrect = true;
         }
         verifyMsgHolder.innerText = msg;
         ac.abort();
@@ -139,7 +138,7 @@
           input.value = otp.code;
           verificationMessage();
         }).catch(function (e) {
-          console.log(e);
+            alert(e);
         });
       }
 
