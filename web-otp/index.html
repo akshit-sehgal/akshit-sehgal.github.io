@@ -2,6 +2,8 @@
 <html>
 
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=0" />
   <title>Web OTP Demo</title>
   <style type="text/css">
     *,
@@ -9,34 +11,124 @@
     body {
       margin: 0;
       padding: 0;
+      font-family: Arial, Helvetica, sans-serif;
     }
+    body{
+      background-color: #E0F7FA;
+    }
+
+    .container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80%;
+      max-width: 400px;
+    }
+
+    .otp-section, .msg-section{
+      text-align: center;
+      border: 1px solid #1E88E5;
+      background-color: #E3F2FD;
+      border-radius: 12px;
+      padding: 20px;
+    }
+
+    
+    .heading {
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+
+    .mob-no {
+      color: #1E88E5;
+      margin-bottom: 20px;
+    }
+
+    #otp-input{
+      border: 1px solid #000;
+      font-size: 16px;
+      padding: 4px 6px;
+      border-radius: 4px;
+      display: block;
+      margin: 5px auto 15px;
+      width: 20%;
+      text-align: center;
+    }
+
+    #verify-btn{
+      display: inline-block;
+      border-radius: 8px;
+      background-color: #1E88E5;
+      color: #fff;
+      padding: 6px 12px;
+      margin-bottom: 10px;
+    }
+
+    #verify-msg{
+      color: #388E3C;
+      margin-top: 5px;
+      margin-bottom: 5px;
+    }
+
+    #verify-msg.error{
+      color: #E53935;
+    }
+
+    .msg-section{
+      text-align: left;
+      margin-top: 20px;
+      background-color: #FFF8E1;
+      border-color: #FFB300;
+    }
+
+    .msg {
+      margin: 20px 5px 0;
+      border: 1px solid #757575;
+      background-color: #FAFAFA;
+      border-radius: 4px;
+      padding: 10px;
+      font-family: monospace;
+    }
+
+    
   </style>
 </head>
 
 <body>
-  <div>Verify your mobile number: </div>
-  <div>+91-XXXXXXXXXX</div>
-  <input id="otp-input" type="text" inputmode="numeric" pattern="\d{6}" autocomplete="one-time-code" required />
-  <button id="verify-btn" type="button">Verify</button>
-  <div>Send the following SMS to your mobile phone from another mobile</div>
-  <div>Your OTP is: 9876</div>
-  <div>@akshitsehgal.com #9876</div>
-  <div id="verify-msg"></div>
+  <div class="container">
+    <section class="otp-section">
+      <div class="heading">Verify your Mobile Number</div>
+      <div class="mob-no">+91-XXXXXXXXXX</div>
+      <div>Enter OTP (XXXX)</div>
+      <input id="otp-input" type="text" inputmode="numeric" pattern="\d{6}" autocomplete="one-time-code" required />
+      <div id="verify-btn">Verify</div>
+      <div id="verify-msg"></div>
+    </section>
+    <section class="msg-section">
+      <div>Send an SMS to your mobile from another mobile in the following format:</div>
+      <div class="msg">For verification, your OTP is: 9876<br />@akshitsehgal.com #9876</div>
+    </section>
+  </div>
   <script type="application/javascript">
     window.addEventListener('DOMContentLoaded', e => {
       const verifyMsgHolder = document.getElementById('verify-msg');
       const input = document.getElementById('otp-input');
-      const verifyBtn = document.getElementById('verify-btn')
+      const verifyBtn = document.getElementById('verify-btn');
+      const ac = new AbortController();
+
       function verificationMessage() {
-        let msg = 'OTP Verified';
+        let msg = 'Mobile Verified Successfully';
+        verifyMsgHolder.classList.remove('error');
         if (input.value !== '9876') {
           msg = 'Incorrect OTP';
+          verifyMsgHolder.classList.add('error');
         }
         verifyMsgHolder.innerText = msg;
         ac.abort();
       }
+
       if ('OTPCredential' in window) {
-        const ac = new AbortController();
         verifyBtn.onclick = verificationMessage;
         navigator.credentials.get({
           otp: { transport: ['sms'] },
@@ -45,7 +137,7 @@
           input.value = otp.code;
           verificationMessage();
         }).catch(function (e) {
-          alert(e);
+          console.log(e);
         });
       }
     });
