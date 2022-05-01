@@ -13,7 +13,8 @@
       padding: 0;
       font-family: Arial, Helvetica, sans-serif;
     }
-    body{
+
+    body {
       background-color: #E0F7FA;
     }
 
@@ -26,7 +27,8 @@
       max-width: 400px;
     }
 
-    .otp-section, .msg-section{
+    .otp-section,
+    .msg-section {
       text-align: center;
       border: 1px solid #1E88E5;
       background-color: #E3F2FD;
@@ -34,7 +36,7 @@
       padding: 20px;
     }
 
-    
+
     .heading {
       font-weight: 700;
       margin-bottom: 5px;
@@ -45,7 +47,7 @@
       margin-bottom: 20px;
     }
 
-    #otp-input{
+    #otp-input {
       border: 1px solid #000;
       font-size: 16px;
       padding: 4px 6px;
@@ -54,9 +56,10 @@
       margin: 5px auto 15px;
       width: 20%;
       text-align: center;
+      outline: none;
     }
 
-    #verify-btn{
+    #verify-btn {
       display: inline-block;
       border-radius: 8px;
       background-color: #1E88E5;
@@ -65,17 +68,17 @@
       margin-bottom: 10px;
     }
 
-    #verify-msg{
+    #verify-msg {
       color: #388E3C;
       margin-top: 5px;
       margin-bottom: 5px;
     }
 
-    #verify-msg.error{
+    #verify-msg.error {
       color: #E53935;
     }
 
-    .msg-section{
+    .msg-section {
       text-align: left;
       margin-top: 20px;
       background-color: #FFF8E1;
@@ -90,8 +93,6 @@
       padding: 10px;
       font-family: monospace;
     }
-
-    
   </style>
 </head>
 
@@ -111,7 +112,7 @@
     </section>
   </div>
   <script type="application/javascript">
-    window.addEventListener('DOMContentLoaded', e => {
+    window.addEventListener('DOMContentLoaded', function (e) {
       const verifyMsgHolder = document.getElementById('verify-msg');
       const input = document.getElementById('otp-input');
       const verifyBtn = document.getElementById('verify-btn');
@@ -119,13 +120,17 @@
 
       function verificationMessage() {
         let msg = 'Mobile Verified Successfully';
+        let incorrect = false;
         verifyMsgHolder.classList.remove('error');
         if (input.value !== '9876') {
           msg = 'Incorrect OTP';
           verifyMsgHolder.classList.add('error');
+          incorrect = true;
         }
         verifyMsgHolder.innerText = msg;
-        ac.abort();
+        if (!incorrect) {
+          ac.abort();
+        }
       }
 
       if ('OTPCredential' in window) {
@@ -140,6 +145,10 @@
           console.log(e);
         });
       }
+
+      window.addEventListener('error', function (e) {
+        alert(e);
+      });
     });
   </script>
 </body>
