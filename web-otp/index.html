@@ -122,10 +122,11 @@
       const verifyBtn = document.getElementById('verify-btn');
       const enterOtpLbl = document.getElementById('enter-otp-lbl');
       const msgSection = document.querySelector('.msg-section');
+      const headingLbl = document.querySelector('.heading');
       const ac = new AbortController();
 
       function verificationMessage() {
-        let msg = 'Mobile Verified Successfully';
+        let msg = 'Mobile Number verified successfully';
         let correct = true;
         verifyMsgHolder.classList.remove('error');
         if (input.value !== '9876') {
@@ -139,6 +140,7 @@
           verifyBtn.style.display = 'none';
           enterOtpLbl.style.display = 'none';
           msgSection.style.display = 'none';
+          headingLbl.style.display = 'none';
           ac.abort();
         }
       }
