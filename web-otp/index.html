@@ -59,7 +59,7 @@
       outline: none;
     }
 
-    #verify-btn {
+    #verify-btn, #retry-btn {
       display: inline-block;
       border: none;
       border-radius: 8px;
@@ -103,59 +103,88 @@
 <body>
   <div class="container">
     <section class="otp-section">
-      <div class="heading">Verify your Mobile Number</div>
+      <div class="heading">Verify your Mobile No.</div>
       <div class="mob-no">+91-XXXXXXXXXX</div>
-      <div id="enter-otp-lbl">Enter OTP (XXXX)</div>
+      <div class="enter-otp-lbl">Enter OTP (XXXX)</div>
       <input id="otp-input" type="text" inputmode="numeric" pattern="\d{6}" autocomplete="one-time-code" required />
       <button id="verify-btn">Verify</button>
+      <button id="retry-btn">Retry</button>
       <div id="verify-msg"></div>
     </section>
     <section class="msg-section">
-      <div>Send an SMS to your mobile from another mobile or SMS service in the following format:</div>
+      <div>For verification:<br/><em>Send an SMS to your mobile from another mobile or SMS service in the following format</em></div>
       <div class="msg">For verification, your OTP is: 9876<br />@akshitsehgal.com #9876</div>
     </section>
   </div>
   <script type="application/javascript">
     window.addEventListener('DOMContentLoaded', function (e) {
+
       const verifyMsgHolder = document.getElementById('verify-msg');
       const input = document.getElementById('otp-input');
       const verifyBtn = document.getElementById('verify-btn');
-      const enterOtpLbl = document.getElementById('enter-otp-lbl');
+      const retryBtn = document.getElementById('retry-btn');
+
+      const enterOtpLbl = document.querySelector('.enter-otp-lbl');
       const msgSection = document.querySelector('.msg-section');
-      const headingLbl = document.querySelector('.heading');
-      const ac = new AbortController();
+      
+      let ac = null;
+
+      function showFields(){
+        input.style.display = 'block';
+        verifyBtn.style.display = 'inline-block';
+        enterOtpLbl.style.display = 'block';
+        msgSection.style.display = 'block';
+        retryBtn.style.display = 'none';
+        input.value = '';
+      }
+
+      function hideFields(isOTPCorrect){
+        input.style.display = 'none';
+        verifyBtn.style.display = 'none';
+        enterOtpLbl.style.display = 'none';
+        msgSection.style.display = 'none';
+        if(!isOTPCorrect){
+          retryBtn.style.display = 'inline-block';
+        }
+      }
 
       function verificationMessage() {
-        let msg = 'Mobile Number verified successfully';
-        let correct = true;
+        let msg = 'Mobile No. verified successfully';
+        let isOTPCorrect = true;
         verifyMsgHolder.classList.remove('error');
         if (input.value !== '9876') {
           msg = 'Incorrect OTP';
           verifyMsgHolder.classList.add('error');
-          correct = false;
+          isOTPCorrect = false;
         }
         verifyMsgHolder.innerText = msg;
-        if (correct) {
-          input.style.display = 'none';
-          verifyBtn.style.display = 'none';
-          enterOtpLbl.style.display = 'none';
-          msgSection.style.display = 'none';
-          headingLbl.style.display = 'none';
-          ac.abort();
+        hideFields(isOTPCorrect);
+        ac.abort();
+      }
+
+      function handleOTP() {
+        if ('credentials' in navigator && 'OTPCredential' in window) {
+          ac = new AbortController();
+          navigator.credentials.get({
+            otp: { transport: ['sms'] },
+            signal: ac.signal
+          }).then(function (otp) {
+            input.value = otp.code;
+            verificationMessage();
+          }).catch(function (e) {
+            console.log(e);
+          });
         }
       }
-      verifyBtn.onclick = verificationMessage;
-      if ('OTPCredential' in window) {
-        navigator.credentials.get({
-          otp: { transport: ['sms'] },
-          signal: ac.signal
-        }).then(function (otp) {
-          input.value = otp.code;
-          verificationMessage();
-        }).catch(function (e) {
-          console.log(e);
-        });
+
+      function setup(){
+        handleOTP();
+        showFields();
       }
+
+      verifyBtn.onclick = verificationMessage;
+      retryBtn.onclick = setup;
+      setup();
 
       window.addEventListener('error', function (e) {
         alert(e);
