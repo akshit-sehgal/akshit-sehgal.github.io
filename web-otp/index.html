@@ -174,7 +174,11 @@
             signal: ac.signal
           }).then(function (otp) {
             input.value = otp.code;
-            verificationMessage();
+            const url = new URL(window.location.href);
+            const submitFlag = url.searchParams.get('submit');
+            if(submitFlag !== 'false'){
+              verificationMessage();
+            }
           }).catch(function (e) {
             console.log(e);
           });
