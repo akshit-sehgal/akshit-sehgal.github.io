@@ -61,6 +61,7 @@ body {
 }
 
 .sidebar-header {
+    position: relative;
     padding-bottom: 1.25rem;
     margin-bottom: 1.25rem;
     border-bottom: 1px solid var(--rule);
@@ -418,6 +419,8 @@ aside.note {
     border-radius: 8px;
     cursor: pointer;
     box-shadow: 0 4px 14px rgba(0,0,0,0.18);
+    transition: transform 0.22s ease, opacity 0.22s ease;
+    transform-origin: top left;
 }
 .menu-toggle::before {
     content: '';
@@ -428,6 +431,52 @@ aside.note {
         linear-gradient(currentColor, currentColor) 0 50%/100% 2px no-repeat,
         linear-gradient(currentColor, currentColor) 0 100%/100% 2px no-repeat;
 }
+/* Hide while scrolling */
+.menu-toggle.scrolling {
+    transform: translateY(-150%);
+    opacity: 0;
+    pointer-events: none;
+}
+/* Hide while sidebar is open */
+.menu-toggle.sidebar-open {
+    transform: scale(0.6);
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Sidebar close button (mobile only) */
+.sidebar-close {
+    display: none;
+    position: absolute;
+    top: 0.85rem;
+    right: 0.85rem;
+    width: 36px;
+    height: 36px;
+    border: none;
+    background: transparent;
+    border-radius: 50%;
+    cursor: pointer;
+    color: var(--ink-soft);
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    transition: background 0.15s, color 0.15s;
+}
+.sidebar-close:hover {
+    background: rgba(124, 45, 18, 0.08);
+    color: var(--accent-deep);
+}
+.sidebar-close::before,
+.sidebar-close::after {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 2px;
+    background: currentColor;
+    border-radius: 1px;
+}
+.sidebar-close::before { transform: rotate(45deg); }
+.sidebar-close::after  { transform: rotate(-45deg); }
 
 .sidebar-backdrop {
     display: none;
@@ -475,6 +524,9 @@ aside.note {
     .sidebar.open { transform: translateX(0); }
 
     .menu-toggle { display: inline-flex; }
+    .sidebar-close { display: inline-flex; }
+
+    .sidebar-header { padding-right: 2.75rem; }
 
     body { font-size: 16px; }
 
@@ -611,6 +663,7 @@ aside.note {
 <div class="sidebar-header">
 <h2 class="sidebar-title">Mastering Modern Java</h2>
 <p class="sidebar-subtitle">Beginner to Pro</p>
+<button class="sidebar-close" id="sidebar-close" aria-label="Close contents"></button>
 </div>
 <input type="search" class="sidebar-search" id="toc-search" placeholder="Filter chapters and sections..." autocomplete="off">
 <nav class="sidebar-nav" aria-label="Table of contents">
@@ -5313,6 +5366,7 @@ const navLinks = document.querySelectorAll('.sidebar-nav a');
 const sidebar = document.querySelector('.sidebar');
 const backdrop = document.getElementById('sidebar-backdrop');
 const menuToggle = document.getElementById('menu-toggle');
+const sidebarClose = document.getElementById('sidebar-close');
 
 const MOBILE_BREAKPOINT = 860;
 
@@ -5320,12 +5374,14 @@ function openSidebar() {
     sidebar.classList.add('open');
     backdrop.classList.add('visible');
     document.body.classList.add('no-scroll');
+    menuToggle.classList.add('sidebar-open');
     menuToggle.setAttribute('aria-expanded', 'true');
 }
 function closeSidebar() {
     sidebar.classList.remove('open');
     backdrop.classList.remove('visible');
     document.body.classList.remove('no-scroll');
+    menuToggle.classList.remove('sidebar-open');
     menuToggle.setAttribute('aria-expanded', 'false');
 }
 function toggleSidebar() {
@@ -5333,6 +5389,7 @@ function toggleSidebar() {
 }
 
 menuToggle.addEventListener('click', toggleSidebar);
+sidebarClose.addEventListener('click', closeSidebar);
 backdrop.addEventListener('click', closeSidebar);
 document.addEventListener('keydown', e => {
     if (e.key === 'Escape' && sidebar.classList.contains('open')) closeSidebar();
@@ -5388,6 +5445,28 @@ navLinks.forEach(a => {
         }
     });
 });
+
+// Hide the Contents pill while scrolling, show it once scroll stops.
+// Only applies on mobile (the pill isn't shown otherwise).
+let scrollTimer = null;
+let lastScrollY = window.scrollY;
+const SCROLL_THRESHOLD = 8;       // ignore tiny scrolls
+const SCROLL_IDLE_MS = 220;       // delay before reappearing
+
+window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    const delta = Math.abs(y - lastScrollY);
+    lastScrollY = y;
+
+    // Only hide while sidebar is closed; if it's open, leave the toggle hidden anyway
+    if (delta > SCROLL_THRESHOLD && !sidebar.classList.contains('open')) {
+        menuToggle.classList.add('scrolling');
+    }
+    clearTimeout(scrollTimer);
+    scrollTimer = setTimeout(() => {
+        menuToggle.classList.remove('scrolling');
+    }, SCROLL_IDLE_MS);
+}, { passive: true });
 </script>
 </body>
 </html>
