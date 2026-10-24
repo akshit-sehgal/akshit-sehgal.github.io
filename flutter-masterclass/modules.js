@@ -1,0 +1,1 @@
+window.FIELDGUIDE_MODULES = [];
