@@ -49,32 +49,37 @@
   <script src="https://cdn.jsdelivr.net/npm/@rive-app/canvas@2.49.4/rive.js" integrity="sha384-ZXsTBqUuVDDifB83vIhfgIW3w46dT7kGpPVxHPg1kLktL48vB6GjOAFx4VYYB6Fd" crossorigin="anonymous"></script>
   <script>
     // puppy.riv is built from ./puppy/scene.rml with the Rive CLI.
+    // The canvas fills the page and the artboard is drawn with Fit.Cover, so a
+    // pointer listener inside the .riv catches a tap anywhere and fires the
+    // view model's "jump" trigger by itself; no click handling is needed here.
     const canvas = document.getElementById("stage");
     const hint = document.getElementById("hint");
-    let jumpInput = null;
+    let jumpTrigger = null;
 
     const puppy = new rive.Rive({
       src: "puppy.riv",
       canvas,
       autoplay: true,
+      autoBind: true,
       stateMachines: "Puppy",
       layout: new rive.Layout({ fit: rive.Fit.Cover, alignment: rive.Alignment.Center }),
       onLoad: () => {
         puppy.resizeDrawingSurfaceToCanvas();
-        jumpInput = puppy.stateMachineInputs("Puppy").find((i) => i.name === "jump");
+        jumpTrigger = puppy.viewModelInstance?.trigger("jump") ?? null;
       },
     });
 
     window.addEventListener("resize", () => puppy.resizeDrawingSurfaceToCanvas());
 
-    // Tap / click / key anywhere on the page fires the state machine's "jump" trigger.
-    function jump() {
-      if (jumpInput) jumpInput.fire();
-      hint.classList.add("hidden");
-    }
-    document.addEventListener("pointerdown", jump);
+    const hideHint = () => hint.classList.add("hidden");
+    document.addEventListener("pointerdown", hideHint);
+
+    // Keyboard users can make the puppy jump too.
     document.addEventListener("keydown", (e) => {
-      if (e.code === "Space" || e.code === "Enter") { e.preventDefault(); jump(); }
+      if (e.code !== "Space" && e.code !== "Enter") return;
+      e.preventDefault();
+      jumpTrigger?.trigger();
+      hideHint();
     });
   </script>
 </body>

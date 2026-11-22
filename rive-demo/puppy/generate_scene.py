@@ -1,11 +1,19 @@
 #!/usr/bin/env python3
 """Generates scene.rml for the walking-puppy Rive demo.
 
-Build the .riv with the Rive CLI:
-    python3 generate_scene.py && rive . --verify && rive . --screenshot=preview.png --advance=1s
+Build and check the .riv with the Rive CLI (https://rive.app/docs/cli):
+    python3 generate_scene.py
+    rive . --verify
+    rive . --screenshot=walk.png --advance=1s
+    rive . --screenshot=jump.png --advance=1s --pointer=click@300,300 --advance=20
+    rive . --publish          # writes build/puppy.riv (needs `rive login`)
 
 The scene is written as code because the street repeats: buildings, sidewalk
-tiles and lane dashes are tiled in loops and scrolled to make the puppy walk.
+seams and lane dashes are tiled in loops and scrolled to make the puppy walk.
+
+Rive draws the FIRST child of a parent on top. The lists below are written
+back-to-front (sky first, puppy last) for readability and `stack()` reverses
+them when the RML is emitted.
 """
 from pathlib import Path
 
@@ -20,6 +28,11 @@ def new_id():
     global _next_id
     _next_id += 1
     return f"0:{_next_id}"
+
+
+def stack(*parts):
+    """Join parts listed back-to-front into Rive's front-first child order."""
+    return "".join(reversed(parts))
 
 
 def fill(color, name="Fill"):
@@ -43,24 +56,38 @@ def rect(name, x, y, w, h, color, r=0.0, rot=0.0, origin_y=0.5, sid=None):
             f'{fill(color)}</Shape>')
 
 
-def keys(prop, frames, interp="linear"):
-    kfs = "".join(f'<KeyFrameDouble frame="{f}" value="{v}" interpolationType="{interp}"/>'
-                  for f, v in frames)
-    return f'<KeyedProperty property="{prop}">{kfs}</KeyedProperty>'
+EASE_IN_OUT = (0.42, 0, 0.58, 1)
+
+
+def keys(prop, frames, ease=None):
+    """Keyframes for one property. `ease` = cubic-bezier control points, else linear."""
+    out = []
+    for f, v in frames:
+        if ease:
+            x1, y1, x2, y2 = ease
+            out.append(f'<KeyFrameDouble frame="{f}" value="{v}" interpolationType="cubic">'
+                       f'<CubicEaseInterpolator x1="{x1}" y1="{y1}" x2="{x2}" y2="{y2}"/>'
+                       '</KeyFrameDouble>')
+        else:
+            out.append(f'<KeyFrameDouble frame="{f}" value="{v}" interpolationType="linear"/>')
+    return f'<KeyedProperty property="{prop}">{"".join(out)}</KeyedProperty>'
 
 
 def keyed(obj_id, *props):
     return f'<KeyedObject objectId="{obj_id}">{"".join(props)}</KeyedObject>'
 
 
-# ---------------------------------------------------------------- ids we key
-ID_ARTBOARD, ID_STYLE, ID_SM, ID_JUMP = "0:2", "0:3", "0:4", "0:5"
+# ---------------------------------------------------------------- ids
+ID_ARTBOARD, ID_STYLE, ID_SM = "0:2", "0:3", "0:4"
 ID_CITY, ID_GROUND = "0:10", "0:11"
 ID_PUPPY, ID_BODY, ID_HEAD, ID_TAIL = "0:20", "0:21", "0:22", "0:23"
 ID_LEG_BF, ID_LEG_FF, ID_LEG_BN, ID_LEG_FN = "0:24", "0:25", "0:26", "0:27"
 ID_EAR_N, ID_EAR_F, ID_SHADOW = "0:28", "0:29", "0:30"
 ID_ANIM_CITY, ID_ANIM_GROUND, ID_ANIM_WALK, ID_ANIM_JUMP = "0:40", "0:41", "0:42", "0:43"
 ID_ST_WALK, ID_ST_JUMP = "0:50", "0:51"
+# view model: one fire-once "jump" trigger the host page (or a tap) can fire
+ID_VM, ID_VM_JUMP, ID_VM_INST = "0:60", "0:61", "0:62"
+TRIGGER_KEY = 686       # ViewModelInstanceTrigger.propertyValue
 
 # ------------------------------------------------------------------- scenery
 # Buildings repeat every 240px and scroll at half the ground speed (parallax).
@@ -74,26 +101,23 @@ for period in range(4):
     for bx, bw, bh, col in BUILDINGS:
         cx = period * 240 + bx
         city.append(rect("Building", cx, 360 - bh / 2, bw, bh, col, r=6))
-        # windows: a small grid of soft white panes
+        # windows: a small grid of soft white panes, drawn over the building
         cols = max(1, int((bw - 16) // 22))
         rows = max(1, int((bh - 30) // 30))
         for c in range(cols):
             for rr in range(rows):
                 wx = cx - (cols - 1) * 11 + c * 22
                 wy = 360 - bh + 22 + rr * 30
-                city.append(rect("Window", wx, wy, 12, 14, "AAFFFFFF", r=2))
-city_node = f'<Node x="0" y="0" name="City" id="{ID_CITY}">{"".join(city)}</Node>'
+                city.append(rect("Window", wx, wy, 12, 14, "B3FFFFFF", r=2))
+city_node = f'<Node x="0" y="0" name="City" id="{ID_CITY}">{stack(*city)}</Node>'
 
-# Sidewalk tile seams (every 60px) and lane dashes (every 120px) share one node
-# that scrolls 120px per loop, so the ground appears to slide under the puppy.
-ground = []
-for k in range(13):
-    ground.append(rect("Seam", k * 60, 380, 3, 40, "FFC4BBAB"))
-for k in range(7):
-    ground.append(rect("Dash", k * 120 + 30, 505, 56, 8, "FFF5F0E1", r=4))
-ground_node = f'<Node x="0" y="0" name="Ground" id="{ID_GROUND}">{"".join(ground)}</Node>'
+# Sidewalk seams (every 60px) and lane dashes (every 120px) share one node that
+# scrolls 120px per loop, so the ground appears to slide under the puppy.
+ground = [rect("Seam", k * 60, 380, 3, 40, "FFC9BFAE") for k in range(13)]
+ground += [rect("Dash", k * 120 + 30, 505, 56, 8, "FFF5F0E1", r=4) for k in range(7)]
+ground_node = f'<Node x="0" y="0" name="Ground" id="{ID_GROUND}">{stack(*ground)}</Node>'
 
-scenery = "".join([
+scenery = [
     ellipse("Sun", 480, 105, 74, 74, "FFFFE08A"),
     ellipse("Cloud", 130, 95, 110, 40, "FFFFFFFF"),
     ellipse("Cloud", 165, 80, 70, 44, "FFFFFFFF"),
@@ -103,24 +127,24 @@ scenery = "".join([
     rect("Curb", W / 2, 404, W, 8, "FFB8AE9C"),
     rect("Road", W / 2, 508, W, 200, "FF5B5F6B"),
     ground_node,
-])
+]
 
 # --------------------------------------------------------------------- puppy
 TAN, TAN_DARK, CREAM, BROWN, INK = "FFF2C48D", "FFD9A66B", "FFFBE6C8", "FFB5733A", "FF2B1D16"
 
-head = "".join([
+head = stack(
     ellipse("Ear Far", 18, -16, 26, 46, BROWN, rot=-0.35, sid=ID_EAR_F),
     ellipse("Head", 0, 0, 84, 76, TAN),
     ellipse("Snout", 26, 14, 46, 32, CREAM),
-    ellipse("Nose", 46, 6, 18, 13, INK),
     ellipse("Tongue", 32, 31, 10, 12, "FFFF7A8A"),
+    ellipse("Nose", 46, 6, 18, 13, INK),
     ellipse("Eye", 12, -8, 11, 14, INK),
     ellipse("Eye Shine", 14, -11, 4, 4, "FFFFFFFF"),
     ellipse("Cheek", 6, 12, 15, 9, "88FF8FA3"),
     ellipse("Ear Near", -20, -6, 28, 50, BROWN, rot=0.35, sid=ID_EAR_N),
-])
+)
 
-body = "".join([
+body = stack(
     rect("Back Leg Far", -40, 15, 15, 40, TAN_DARK, r=7, origin_y=0, sid=ID_LEG_BF),
     rect("Front Leg Far", 35, 15, 15, 40, TAN_DARK, r=7, origin_y=0, sid=ID_LEG_FF),
     rect("Tail", -60, -14, 12, 38, TAN, r=6, rot=-0.6, origin_y=1, sid=ID_TAIL),
@@ -132,23 +156,28 @@ body = "".join([
     rect("Collar", 50, -18, 10, 46, "FFE5484D", r=5, rot=0.3),
     ellipse("Tag", 57, 8, 12, 12, "FFFFC83D"),
     f'<Node x="70" y="-40" name="Head Group" id="{ID_HEAD}">{head}</Node>',
-])
+)
 
-puppy = (ellipse("Shadow", PUPPY_X, GROUND_Y + 2, 150, 16, "30000000", sid=ID_SHADOW)
-         + f'<Node x="{PUPPY_X}" y="0" name="Puppy" id="{ID_PUPPY}">'
-         + f'<Node x="0" y="340" name="Body" id="{ID_BODY}">{body}</Node></Node>')
+puppy = [
+    ellipse("Shadow", PUPPY_X, GROUND_Y + 2, 150, 16, "30000000", sid=ID_SHADOW),
+    f'<Node x="{PUPPY_X}" y="0" name="Puppy" id="{ID_PUPPY}">'
+    f'<Node x="0" y="340" name="Body" id="{ID_BODY}">{body}</Node></Node>',
+]
 
 # ---------------------------------------------------------------- animations
 SWING = 0.32
+leg_a = [(0, SWING), (30, -SWING), (60, SWING)]
+leg_b = [(0, -SWING), (30, SWING), (60, -SWING)]
 walk = (f'<LinearAnimation name="Walk" loopValue="loop" duration="60" fps="60" id="{ID_ANIM_WALK}">'
-        + keyed(ID_LEG_FN, keys("rotation", [(0, SWING), (30, -SWING), (60, SWING)]))
-        + keyed(ID_LEG_BF, keys("rotation", [(0, SWING), (30, -SWING), (60, SWING)]))
-        + keyed(ID_LEG_FF, keys("rotation", [(0, -SWING), (30, SWING), (60, -SWING)]))
-        + keyed(ID_LEG_BN, keys("rotation", [(0, -SWING), (30, SWING), (60, -SWING)]))
-        + keyed(ID_BODY, keys("y", [(0, 340), (15, 337), (30, 340), (45, 337), (60, 340)]))
-        + keyed(ID_TAIL, keys("rotation", [(0, -0.45), (15, -0.95), (30, -0.45), (45, -0.95), (60, -0.45)]))
-        + keyed(ID_HEAD, keys("rotation", [(0, 0), (30, 0.05), (60, 0)]))
-        + keyed(ID_EAR_N, keys("rotation", [(0, 0.35), (15, 0.45), (30, 0.35), (45, 0.45), (60, 0.35)]))
+        + keyed(ID_LEG_FN, keys("rotation", leg_a, EASE_IN_OUT))
+        + keyed(ID_LEG_BF, keys("rotation", leg_a, EASE_IN_OUT))
+        + keyed(ID_LEG_FF, keys("rotation", leg_b, EASE_IN_OUT))
+        + keyed(ID_LEG_BN, keys("rotation", leg_b, EASE_IN_OUT))
+        + keyed(ID_BODY, keys("y", [(0, 340), (15, 337), (30, 340), (45, 337), (60, 340)], EASE_IN_OUT))
+        + keyed(ID_TAIL, keys("rotation", [(0, -0.45), (15, -0.95), (30, -0.45), (45, -0.95), (60, -0.45)], EASE_IN_OUT))
+        + keyed(ID_HEAD, keys("rotation", [(0, 0), (30, 0.05), (60, 0)], EASE_IN_OUT))
+        + keyed(ID_EAR_N, keys("rotation", [(0, 0.35), (15, 0.45), (30, 0.35), (45, 0.45), (60, 0.35)], EASE_IN_OUT))
+        # pin what Jump moves, so blending back from a jump settles cleanly
         + keyed(ID_PUPPY, keys("y", [(0, 0), (60, 0)]))
         + keyed(ID_SHADOW, keys("scaleX", [(0, 1), (60, 1)]), keys("scaleY", [(0, 1), (60, 1)]))
         + '</LinearAnimation>')
@@ -161,13 +190,14 @@ tuck = 0.75
 jump = (f'<LinearAnimation name="Jump" loopValue="oneShot" duration="50" fps="60" id="{ID_ANIM_JUMP}">'
         + keyed(ID_PUPPY, keys("y", hop))
         + keyed(ID_BODY, keys("y", [(0, 340), (50, 340)]))
-        + keyed(ID_LEG_FN, keys("rotation", [(0, 0), (12, -tuck), (34, -tuck), (42, 0), (50, 0)]))
-        + keyed(ID_LEG_FF, keys("rotation", [(0, 0), (12, -tuck), (34, -tuck), (42, 0), (50, 0)]))
-        + keyed(ID_LEG_BN, keys("rotation", [(0, 0), (12, tuck), (34, tuck), (42, 0), (50, 0)]))
-        + keyed(ID_LEG_BF, keys("rotation", [(0, 0), (12, tuck), (34, tuck), (42, 0), (50, 0)]))
-        + keyed(ID_TAIL, keys("rotation", [(0, -0.5), (10, -1.3), (30, -1.3), (50, -0.5)]))
-        + keyed(ID_HEAD, keys("rotation", [(0, 0), (10, -0.12), (30, -0.12), (44, 0.04), (50, 0)]))
-        + keyed(ID_EAR_N, keys("rotation", [(0, 0.35), (16, -0.5), (32, -0.3), (42, 0.6), (50, 0.35)]))
+        + keyed(ID_LEG_FN, keys("rotation", [(0, 0), (12, -tuck), (34, -tuck), (42, 0), (50, 0)], EASE_IN_OUT))
+        + keyed(ID_LEG_FF, keys("rotation", [(0, 0), (12, -tuck), (34, -tuck), (42, 0), (50, 0)], EASE_IN_OUT))
+        + keyed(ID_LEG_BN, keys("rotation", [(0, 0), (12, tuck), (34, tuck), (42, 0), (50, 0)], EASE_IN_OUT))
+        + keyed(ID_LEG_BF, keys("rotation", [(0, 0), (12, tuck), (34, tuck), (42, 0), (50, 0)], EASE_IN_OUT))
+        + keyed(ID_TAIL, keys("rotation", [(0, -0.5), (10, -1.3), (30, -1.3), (50, -0.5)], EASE_IN_OUT))
+        + keyed(ID_HEAD, keys("rotation", [(0, 0), (10, -0.12), (30, -0.12), (44, 0.04), (50, 0)], EASE_IN_OUT))
+        + keyed(ID_EAR_N, keys("rotation", [(0, 0.35), (16, -0.5), (32, -0.3), (42, 0.6), (50, 0.35)], EASE_IN_OUT))
+        + keyed(ID_EAR_F, keys("rotation", [(0, -0.35), (16, -1.0), (32, -0.8), (42, -0.2), (50, -0.35)], EASE_IN_OUT))
         + keyed(ID_SHADOW, keys("scaleX", shadow), keys("scaleY", shadow))
         + '</LinearAnimation>')
 
@@ -175,6 +205,8 @@ city_anim = (f'<LinearAnimation name="City Scroll" loopValue="loop" duration="48
              + keyed(ID_CITY, keys("x", [(0, 0), (480, -240)])) + '</LinearAnimation>')
 ground_anim = (f'<LinearAnimation name="Ground Scroll" loopValue="loop" duration="120" fps="60" id="{ID_ANIM_GROUND}">'
                + keyed(ID_GROUND, keys("x", [(0, 0), (120, -120)])) + '</LinearAnimation>')
+
+# ------------------------------------------------------------- state machine
 
 
 def looping_layer(name, anim_id):
@@ -186,33 +218,56 @@ def looping_layer(name, anim_id):
             '</StateMachineLayer>')
 
 
+VM_JUMP_PATH = f"{ID_VM}-{ID_VM_JUMP}"
+jump_condition = (
+    '<TransitionViewModelCondition><TransitionPropertyViewModelComparator>'
+    f'<BindablePropertyTrigger><DataBindContext sourcePathIds="{VM_JUMP_PATH}" propertyKey="{TRIGGER_KEY}"/>'
+    '</BindablePropertyTrigger></TransitionPropertyViewModelComparator>'
+    '<TransitionValueTriggerComparator/></TransitionViewModelCondition>')
+
+# A press anywhere on the artboard fires the "jump" trigger.
+tap_listener = (
+    f'<StateMachineListenerSingle targetId="{ID_ARTBOARD}" listenerTypeValue="down" name="Tap To Jump" id="{new_id()}">'
+    '<ListenerViewModelChange><BindablePropertyTrigger propertyValue="1">'
+    f'<DataBindContext sourcePathIds="{VM_JUMP_PATH}" propertyKey="{TRIGGER_KEY}" direction="true"/>'
+    '</BindablePropertyTrigger></ListenerViewModelChange></StateMachineListenerSingle>')
+
 state_machine = (
     f'<StateMachine name="Puppy" id="{ID_SM}">'
-    f'<StateMachineTrigger name="jump" id="{ID_JUMP}"/>'
     + looping_layer("City", ID_ANIM_CITY)
     + looping_layer("Ground", ID_ANIM_GROUND)
     + f'<StateMachineLayer name="Puppy" id="{new_id()}">'
     '<AnyState x="200" y="-120"/><ExitState x="400" y="-120"/>'
     f'<EntryState><StateTransition stateToId="{ID_ST_WALK}"/></EntryState>'
     f'<AnimationState x="200" animationId="{ID_ANIM_WALK}" id="{ID_ST_WALK}">'
-    f'<StateTransition stateToId="{ID_ST_JUMP}" duration="80">'
-    f'<TransitionTriggerCondition inputId="{ID_JUMP}"/></StateTransition>'
+    f'<StateTransition stateToId="{ID_ST_JUMP}" duration="80">{jump_condition}</StateTransition>'
     '</AnimationState>'
     f'<AnimationState x="200" y="150" animationId="{ID_ANIM_JUMP}" id="{ID_ST_JUMP}">'
-    # exit-time transition back to walking once the hop finishes
-    f'<StateTransition stateToId="{ID_ST_WALK}" duration="150" flags="12" exitTime="100"/>'
+    # back to walking once the hop has played all the way through
+    f'<StateTransition stateToId="{ID_ST_WALK}" duration="150" enableExitTime="true" '
+    'exitTimeIsPercetange="true" exitTime="100"/>'
     '</AnimationState>'
     '</StateMachineLayer>'
-    '</StateMachine>')
+    + tap_listener
+    + '</StateMachine>')
+
+view_model = (
+    f'<ViewModel defaultInstanceId="{ID_VM_INST}" name="Puppy" id="{ID_VM}">'
+    f'<ViewModelPropertyTrigger name="jump" id="{ID_VM_JUMP}"/>'
+    f'<ViewModelInstance exports="true" name="Default" id="{ID_VM_INST}">'
+    f'<ViewModelInstanceTrigger viewModelPropertyId="{ID_VM_JUMP}"/>'
+    '</ViewModelInstance></ViewModel>')
 
 doc = (
     '<Rive version="1" kind="fragment">\n'
-    f'<Artboard defaultStateMachineId="{ID_SM}" styleId="{ID_STYLE}" width="{W}" height="{H}" '
-    f'name="Puppy Street" id="{ID_ARTBOARD}">\n'
+    f'<Artboard defaultStateMachineId="{ID_SM}" viewModelId="{ID_VM}" viewModelInstanceId="{ID_VM_INST}" '
+    f'styleId="{ID_STYLE}" width="{W}" height="{H}" name="Puppy Street" id="{ID_ARTBOARD}">\n'
     f'<LayoutComponentStyle name="Artboard Style" id="{ID_STYLE}"/>\n'
     f'{fill("FFBFE6FF", "Sky")}\n'
-    f'{scenery}\n{puppy}\n{state_machine}\n{walk}\n{jump}\n{city_anim}\n{ground_anim}\n'
-    '</Artboard>\n</Rive>\n')
+    f'{stack(*scenery, *puppy)}\n{state_machine}\n{walk}\n{jump}\n{city_anim}\n{ground_anim}\n'
+    '</Artboard>\n'
+    f'{view_model}\n'
+    '</Rive>\n')
 
 Path(__file__).with_name("scene.rml").write_text(doc)
 print("wrote scene.rml")
