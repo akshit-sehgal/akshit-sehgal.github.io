@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Puppy Walk · Rive Demo</title>
+  <style>
+    html, body {
+      margin: 0;
+      height: 100%;
+      overflow: hidden;
+      background: #bfe6ff;
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      /* the whole page is a tap target: no text selection or double-tap zoom */
+      user-select: none;
+      -webkit-user-select: none;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+      cursor: pointer;
+    }
+    canvas {
+      display: block;
+      width: 100vw;
+      height: 100vh;
+      height: 100dvh;
+    }
+    .hint {
+      position: fixed;
+      top: max(16px, env(safe-area-inset-top));
+      left: 50%;
+      transform: translateX(-50%);
+      width: max-content;
+      max-width: calc(100vw - 32px);
+      text-align: center;
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.85);
+      color: #2b1d16;
+      font-size: 15px;
+      font-weight: 600;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+      pointer-events: none;
+      transition: opacity 0.6s ease;
+    }
+    .hint.hidden { opacity: 0; }
+  </style>
+</head>
+<body>
+  <canvas id="stage" aria-label="A cartoon puppy walking calmly along a city street. Tap anywhere to make it jump."></canvas>
+  <div class="hint" id="hint">Tap anywhere to make the puppy jump 🐾</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@rive-app/canvas@2.49.4/rive.js" integrity="sha384-ZXsTBqUuVDDifB83vIhfgIW3w46dT7kGpPVxHPg1kLktL48vB6GjOAFx4VYYB6Fd" crossorigin="anonymous"></script>
+  <script>
+    // puppy.riv is built from ./puppy/scene.rml with the Rive CLI.
+    // The canvas fills the page and the artboard is drawn with Fit.Cover, so a
+    // pointer listener inside the .riv catches a tap anywhere and fires the
+    // view model's "jump" trigger by itself; no click handling is needed here.
+    const canvas = document.getElementById("stage");
+    const hint = document.getElementById("hint");
+    let jumpTrigger = null;
+
+    const puppy = new rive.Rive({
+      src: "puppy.riv",
+      canvas,
+      autoplay: true,
+      autoBind: true,
+      stateMachine: "Puppy",
+      layout: new rive.Layout({ fit: rive.Fit.Cover, alignment: rive.Alignment.Center }),
+      onLoad: () => {
+        puppy.resizeDrawingSurfaceToCanvas();
+        jumpTrigger = puppy.viewModelInstance?.trigger("jump") ?? null;
+      },
+    });
+
+    window.addEventListener("resize", () => puppy.resizeDrawingSurfaceToCanvas());
+
+    const hideHint = () => hint.classList.add("hidden");
+    document.addEventListener("pointerdown", hideHint);
+
+    // Keyboard users can make the puppy jump too.
+    document.addEventListener("keydown", (e) => {
+      if (e.code !== "Space" && e.code !== "Enter") return;
+      e.preventDefault();
+      jumpTrigger?.trigger();
+      hideHint();
+    });
+  </script>
+</body>
+</html>

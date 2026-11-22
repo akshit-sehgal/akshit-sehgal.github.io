@@ -1,0 +1,549 @@
+<Rive version="1" kind="fragment">
+<Artboard defaultStateMachineId="0:4" viewModelId="0:60" viewModelInstanceId="0:62" styleId="0:3" width="600" height="600" name="Puppy Street" id="0:2">
+<LayoutComponentStyle name="Artboard Style" id="0:3"/>
+<Fill name="Sky"><SolidColor colorValue="FFBFE6FF" name="Color"/></Fill>
+<Node x="300" y="0" name="Puppy" id="0:20"><Node x="0" y="348.1" scaleX="0.85" scaleY="0.85" name="Body" id="0:21"><Node x="46" y="-100" name="head" id="0:22">
+                <Node x="4" y="0" name="Group">
+                    <Shape x="0" y="12.5" name="path">
+                        <PointsPath name="Path">
+                            <StraightVertex x="-41" y="1.5" />
+                            <StraightVertex x="-38" y="-3.5" />
+                        </PointsPath>
+                        <PointsPath name="Path">
+                            <StraightVertex x="-36" y="2.5" />
+                            <StraightVertex x="-33" y="-2.5" />
+                        </PointsPath>
+                        <PointsPath name="Path">
+                            <StraightVertex x="-31" y="3.5" />
+                            <StraightVertex x="-28" y="-1.5" />
+                        </PointsPath>
+                        <PointsPath name="Path">
+                            <StraightVertex x="28" y="3.5" />
+                            <StraightVertex x="31" y="-1.5" />
+                        </PointsPath>
+                        <PointsPath name="Path">
+                            <StraightVertex x="33" y="2.5" />
+                            <StraightVertex x="36" y="-2.5" />
+                        </PointsPath>
+                        <PointsPath name="Path">
+                            <StraightVertex x="38" y="1.5" />
+                            <StraightVertex x="41" y="-3.5" />
+                        </PointsPath>
+                        <Stroke thickness="2.4" cap="round" join="round" name="Stroke">
+                            <SolidColor colorValue="FFF2A09A" name="Color" />
+                        </Stroke>
+                    </Shape>
+                    <Shape x="-3" y="3" name="ellipse">
+                        <Ellipse originX="0.5" originY="0.5" width="6" height="3.2" name="Path" />
+                        <Fill name="Fill">
+                            <SolidColor colorValue="FF8C6A58" name="Color" />
+                        </Fill>
+                    </Shape>
+                    <Shape x="0" y="5.75" name="path">
+                        <PointsPath isClosed="true" name="Path">
+                            <CubicAsymmetricVertex x="-9" y="-1.75" rotation="-1.5708" inDistance="5" outDistance="6" />
+                            <CubicAsymmetricVertex x="9" y="-1.75" rotation="1.5708" inDistance="6" outDistance="5" />
+                            <CubicMirroredVertex x="0" y="6.25" rotation="3.14159" distance="4" />
+                        </PointsPath>
+                        <Fill name="Fill">
+                            <SolidColor colorValue="FF4A2C1D" name="Color" />
+                        </Fill>
+                    </Shape>
+                    <Shape x="0" y="16" name="path">
+                        <PointsPath name="Path">
+                            <CubicDetachedVertex x="-17" y="-3" outRotation="1.10715" outDistance="8.94427" />
+                            <CubicDetachedVertex x="0" y="-3" inRotation="2.03444" inDistance="8.94427" outRotation="1.10715" outDistance="8.94427" />
+                            <CubicDetachedVertex x="17" y="-3" inRotation="2.03444" inDistance="8.94427" />
+                        </PointsPath>
+                        <Stroke thickness="2.4" cap="round" join="round" name="Stroke">
+                            <SolidColor colorValue="FF5C3A21" name="Color" />
+                        </Stroke>
+                    </Shape>
+                    <Shape x="0.5" y="27" name="path">
+                        <PointsPath name="Path">
+                            <StraightVertex x="0" y="-4" />
+                            <StraightVertex x="0" y="4" />
+                        </PointsPath>
+                        <Stroke thickness="2.4" cap="round" join="round" name="Stroke">
+                            <SolidColor colorValue="FFD86A6A" name="Color" />
+                        </Stroke>
+                    </Shape>
+                    <Shape x="0.582751" y="27.5" name="path">
+                        <PointsPath isClosed="true" name="Path">
+                            <CubicDetachedVertex x="-7.58275" y="-9.5" outRotation="1.72345" outDistance="13.1529" />
+                            <CubicAsymmetricVertex x="0.417249" y="9.5" rotation="0" inDistance="5" outDistance="6" />
+                            <CubicDetachedVertex x="7.41725" y="-9.5" inRotation="1.41815" inDistance="13.1529" />
+                        </PointsPath>
+                        <Fill name="Fill">
+                            <SolidColor colorValue="FFF08C8C" name="Color" />
+                        </Fill>
+                        <Stroke thickness="3.2" cap="round" join="round" name="Stroke">
+                            <SolidColor colorValue="FF5C3A21" name="Color" />
+                        </Stroke>
+                    </Shape>
+                    <Shape x="0" y="19.75" name="path">
+                        <PointsPath isClosed="true" name="Path">
+                            <CubicDetachedVertex x="-9" y="-3.75" outRotation="1.5708" outDistance="10" />
+                            <CubicDetachedVertex x="9" y="-3.75" inRotation="1.5708" inDistance="10" />
+                        </PointsPath>
+                        <Fill name="Fill">
+                            <SolidColor colorValue="FF7A2E2A" name="Color" />
+                        </Fill>
+                    </Shape>
+                    <Shape x="25" y="-9.5" name="circle">
+                        <Ellipse originX="0.5" originY="0.5" width="6" height="6" name="Path" />
+                        <Fill name="Fill">
+                            <SolidColor colorValue="FFFFFFFF" name="Color" />
+                        </Fill>
+                    </Shape>
+                    <Shape x="-19" y="-9.5" name="circle">
+                        <Ellipse originX="0.5" originY="0.5" width="6" height="6" name="Path" />
+                        <Fill name="Fill">
+                            <SolidColor colorValue="FFFFFFFF" name="Color" />
+                        </Fill>
+                    </Shape>
+                    <Shape x="22" y="-6" name="ellipse">
+                        <Ellipse originX="0.5" originY="0.5" width="17" height="19" name="Path" />
+                        <Fill name="Fill">
+                            <SolidColor colorValue="FF3B2416" name="Color" />
+                        </Fill>
+                    </Shape>
+                    <Shape x="-22" y="-6" name="ellipse">
+                        <Ellipse originX="0.5" originY="0.5" width="17" height="19" name="Path" />
+                        <Fill name="Fill">
+                            <SolidColor colorValue="FF3B2416" name="Color" />
+                        </Fill>
+                    </Shape>
+                    <Shape x="-2" y="-24.2" name="path">
+                        <PointsPath name="Path">
+                            <CubicDetachedVertex x="-31" y="3.2" outRotation="-0.982794" outDistance="7.2111" />
+                            <CubicDetachedVertex x="-15" y="0.200001" inRotation="-2.46685" inDistance="6.40312" />
+                        </PointsPath>
+                        <PointsPath name="Path">
+                            <CubicDetachedVertex x="16" y="-0.799999" outRotation="-0.674741" outDistance="6.40312" />
+                            <CubicDetachedVertex x="31" y="2.2" inRotation="-2.03444" inDistance="6.7082" />
+                        </PointsPath>
+                        <Stroke thickness="2.4" cap="round" join="round" name="Stroke">
+                            <SolidColor colorValue="FF5C3A21" name="Color" />
+                        </Stroke>
+                    </Shape>
+                </Node>
+                <Shape x="0.5" y="-46.8031" name="path">
+                    <PointsPath name="Path">
+                        <CubicDetachedVertex x="-6.5" y="-1.19694" outRotation="0.643501" outDistance="5" />
+                        <CubicDetachedVertex x="6.5" y="-0.196938" inRotation="2.67795" inDistance="4.47214" />
+                    </PointsPath>
+                    <Stroke thickness="2.4" cap="round" join="round" name="Stroke">
+                        <SolidColor colorValue="FF5C3A21" name="Color" />
+                    </Stroke>
+                </Shape>
+                <Shape x="0.325436" y="-9.25" name="path">
+                    <PointsPath isClosed="true" name="Path">
+                        <CubicDetachedVertex x="-40.3254" y="-26.75" inRotation="2.25653" inDistance="28.4253" outRotation="-0.896055" outDistance="12.8062" />
+                        <CubicDetachedVertex x="-14.3254" y="-40.75" inRotation="3.14159" inDistance="8" outRotation="-1.89255" outDistance="6.32456" />
+                        <CubicDetachedVertex x="-10.3254" y="-52.75" inRotation="2.67795" inDistance="4.47214" outRotation="1.3734" outDistance="5.09902" />
+                        <CubicDetachedVertex x="-2.32544" y="-43.75" inRotation="-2.89661" inDistance="4.12311" outRotation="-1.5708" outDistance="7" />
+                        <CubicDetachedVertex x="7.67456" y="-56.75" inRotation="2.97644" inDistance="6.08276" outRotation="1.89255" outDistance="6.32456" />
+                        <CubicDetachedVertex x="11.6746" y="-43.75" inRotation="-2.67795" inDistance="4.47214" outRotation="-1.19029" outDistance="5.38516" />
+                        <CubicDetachedVertex x="21.6746" y="-50.75" inRotation="3.14159" inDistance="4" outRotation="2.03444" outDistance="4.47214" />
+                        <CubicDetachedVertex x="21.6746" y="-40.75" inRotation="-2.1588" inDistance="3.60555" outRotation="0.165149" outDistance="12.1655" />
+                        <CubicDetachedVertex x="47.6746" y="-20.75" inRotation="-2.03444" inDistance="13.4164" outRotation="1.0637" outDistance="20.5913" />
+                        <CubicDetachedVertex x="49.6746" y="35.25" inRotation="-1.05165" inDistance="16.1245" />
+                        <StraightVertex x="54.6746" y="41.25" />
+                        <StraightVertex x="45.6746" y="43.25" />
+                        <StraightVertex x="47.6746" y="50.25" />
+                        <CubicDetachedVertex x="37.6746" y="49.25" outRotation="2.44685" outDistance="15.6205" />
+                        <CubicDetachedVertex x="-38.3254" y="49.25" inRotation="0.694738" inDistance="15.6205" />
+                        <StraightVertex x="-48.3254" y="50.25" />
+                        <StraightVertex x="-46.3254" y="43.25" />
+                        <StraightVertex x="-55.3254" y="41.25" />
+                        <CubicDetachedVertex x="-50.3254" y="35.25" outRotation="-2.08994" outDistance="16.1245" />
+                    </PointsPath>
+                    <Stroke thickness="3.2" cap="round" join="round" name="Stroke">
+                        <SolidColor colorValue="FF5C3A21" name="Color" />
+                    </Stroke>
+                </Shape>
+                <Shape x="-25.9683" y="-13.4195" name="path">
+                    <PointsPath isClosed="true" name="Path">
+                        <CubicDetachedVertex x="-16.0317" y="-16.5805" inRotation="2.35619" inDistance="8.48528" outRotation="-0.708626" outDistance="18.4391" />
+                        <CubicDetachedVertex x="23.9683" y="-12.5805" inRotation="-1.97569" inDistance="15.2315" outRotation="1.2925" outDistance="14.5602" />
+                        <CubicMirroredVertex x="7.96832" y="23.4195" rotation="2.86329" distance="14.5602" />
+                        <CubicDetachedVertex x="-25.0317" y="7.41945" inRotation="1.17601" inDistance="13" outRotation="-1.67046" outDistance="10.0499" />
+                    </PointsPath>
+                    <Fill name="Fill">
+                        <SolidColor colorValue="FFE99A4E" name="Color" />
+                    </Fill>
+                </Shape>
+                <Shape x="0.325436" y="-9.25" name="path">
+                    <PointsPath isClosed="true" name="Path">
+                        <CubicDetachedVertex x="-40.3254" y="-26.75" inRotation="2.25653" inDistance="28.4253" outRotation="-0.896055" outDistance="12.8062" />
+                        <CubicDetachedVertex x="-14.3254" y="-40.75" inRotation="3.14159" inDistance="8" outRotation="-1.89255" outDistance="6.32456" />
+                        <CubicDetachedVertex x="-10.3254" y="-52.75" inRotation="2.67795" inDistance="4.47214" outRotation="1.3734" outDistance="5.09902" />
+                        <CubicDetachedVertex x="-2.32544" y="-43.75" inRotation="-2.89661" inDistance="4.12311" outRotation="-1.5708" outDistance="7" />
+                        <CubicDetachedVertex x="7.67456" y="-56.75" inRotation="2.97644" inDistance="6.08276" outRotation="1.89255" outDistance="6.32456" />
+                        <CubicDetachedVertex x="11.6746" y="-43.75" inRotation="-2.67795" inDistance="4.47214" outRotation="-1.19029" outDistance="5.38516" />
+                        <CubicDetachedVertex x="21.6746" y="-50.75" inRotation="3.14159" inDistance="4" outRotation="2.03444" outDistance="4.47214" />
+                        <CubicDetachedVertex x="21.6746" y="-40.75" inRotation="-2.1588" inDistance="3.60555" outRotation="0.165149" outDistance="12.1655" />
+                        <CubicDetachedVertex x="47.6746" y="-20.75" inRotation="-2.03444" inDistance="13.4164" outRotation="1.0637" outDistance="20.5913" />
+                        <CubicDetachedVertex x="49.6746" y="35.25" inRotation="-1.05165" inDistance="16.1245" />
+                        <StraightVertex x="54.6746" y="41.25" />
+                        <StraightVertex x="45.6746" y="43.25" />
+                        <StraightVertex x="47.6746" y="50.25" />
+                        <CubicDetachedVertex x="37.6746" y="49.25" outRotation="2.44685" outDistance="15.6205" />
+                        <CubicDetachedVertex x="-38.3254" y="49.25" inRotation="0.694738" inDistance="15.6205" />
+                        <StraightVertex x="-48.3254" y="50.25" />
+                        <StraightVertex x="-46.3254" y="43.25" />
+                        <StraightVertex x="-55.3254" y="41.25" />
+                        <CubicDetachedVertex x="-50.3254" y="35.25" outRotation="-2.08994" outDistance="16.1245" />
+                    </PointsPath>
+                    <Fill name="Fill">
+                        <SolidColor colorValue="FFFFF4E0" name="Color" />
+                    </Fill>
+                </Shape>
+                <Node x="38" y="-34" name="earR" id="0:29">
+                    <Shape x="26" y="41" name="path">
+                        <PointsPath name="Path">
+                            <CubicDetachedVertex x="4" y="9" outRotation="-1.89255" outDistance="6.32456" />
+                            <CubicDetachedVertex x="-4" y="-9" inRotation="0.982794" inDistance="7.2111" />
+                        </PointsPath>
+                        <Stroke thickness="2.4" cap="round" join="round" name="Stroke">
+                            <SolidColor colorValue="FF5C3A21" name="Color" />
+                        </Stroke>
+                    </Shape>
+                    <Shape x="10" y="5.80619" name="path">
+                        <PointsPath isClosed="true" name="Path">
+                            <CubicDetachedVertex x="-12" y="-5.80619" outRotation="-0.197396" outDistance="10.198" />
+                            <CubicDetachedVertex x="12" y="6.19381" inRotation="-2.03444" inDistance="8.94427" outRotation="-2.89661" outDistance="8.24621" />
+                            <CubicDetachedVertex x="-12" y="2.19381" inRotation="0" inDistance="8" />
+                        </PointsPath>
+                        <Fill name="Fill">
+                            <SolidColor colorValue="FFF4B6A6" name="Color" />
+                        </Fill>
+                    </Shape>
+                    <Shape x="15.1496" y="28.9959" name="path">
+                        <PointsPath isClosed="true" name="Path">
+                            <CubicDetachedVertex x="-23.1496" y="-34.9959" outRotation="-0.291457" outDistance="20.8806" />
+                            <CubicDetachedVertex x="24.8504" y="-4.99594" inRotation="-1.83705" inDistance="22.8035" outRotation="1.27934" outDistance="20.8806" />
+                            <CubicDetachedVertex x="9.85039" y="36.0041" inRotation="-0.197396" inDistance="15.2971" outRotation="2.92292" outDistance="9.21954" />
+                            <CubicDetachedVertex x="-7.14961" y="23.0041" inRotation="1.35213" inDistance="9.21954" outRotation="-1.91382" outDistance="14.8661" />
+                            <CubicDetachedVertex x="-27.1496" y="-20.9959" inRotation="1.05165" inDistance="16.1245" />
+                        </PointsPath>
+                        <Fill name="Fill">
+                            <SolidColor colorValue="FFE99A4E" name="Color" />
+                        </Fill>
+                        <Stroke thickness="3.2" cap="round" join="round" name="Stroke">
+                            <SolidColor colorValue="FF5C3A21" name="Color" />
+                        </Stroke>
+                    </Shape>
+                </Node>
+                <Node x="-38" y="-34" name="earL" id="0:28">
+                    <Shape x="-26" y="41" name="path">
+                        <PointsPath name="Path">
+                            <CubicDetachedVertex x="-4" y="9" outRotation="-1.24905" outDistance="6.32456" />
+                            <CubicDetachedVertex x="4" y="-9" inRotation="2.1588" inDistance="7.2111" />
+                        </PointsPath>
+                        <Stroke thickness="2.4" cap="round" join="round" name="Stroke">
+                            <SolidColor colorValue="FF5C3A21" name="Color" />
+                        </Stroke>
+                    </Shape>
+                    <Shape x="-15.1496" y="28.9959" name="path">
+                        <PointsPath isClosed="true" name="Path">
+                            <CubicDetachedVertex x="23.1496" y="-34.9959" outRotation="-2.85014" outDistance="20.8806" />
+                            <CubicDetachedVertex x="-24.8504" y="-4.99594" inRotation="-1.30454" inDistance="22.8035" outRotation="1.86225" outDistance="20.8806" />
+                            <CubicDetachedVertex x="-9.85039" y="36.0041" inRotation="-2.9442" inDistance="15.2971" outRotation="0.218669" outDistance="9.21954" />
+                            <CubicDetachedVertex x="7.14961" y="23.0041" inRotation="1.78947" inDistance="9.21954" outRotation="-1.22777" outDistance="14.8661" />
+                            <CubicDetachedVertex x="27.1496" y="-20.9959" inRotation="2.08994" inDistance="16.1245" />
+                        </PointsPath>
+                        <Fill name="Fill">
+                            <SolidColor colorValue="FFE99A4E" name="Color" />
+                        </Fill>
+                        <Stroke thickness="3.2" cap="round" join="round" name="Stroke">
+                            <SolidColor colorValue="FF5C3A21" name="Color" />
+                        </Stroke>
+                    </Shape>
+                </Node>
+            </Node>
+            <Shape x="46.5" y="-21" name="circle">
+                <Ellipse originX="0.5" originY="0.5" width="3" height="3" name="Path" />
+                <Fill name="Fill">
+                    <SolidColor colorValue="FF8A5A2B" name="Color" />
+                </Fill>
+            </Shape>
+            <Shape x="43" y="-22.5" name="circle">
+                <Ellipse originX="0.5" originY="0.5" width="3" height="3" name="Path" />
+                <Fill name="Fill">
+                    <SolidColor colorValue="FF8A5A2B" name="Color" />
+                </Fill>
+            </Shape>
+            <Shape x="39.5" y="-21" name="circle">
+                <Ellipse originX="0.5" originY="0.5" width="3" height="3" name="Path" />
+                <Fill name="Fill">
+                    <SolidColor colorValue="FF8A5A2B" name="Color" />
+                </Fill>
+            </Shape>
+            <Shape x="43" y="-17" name="ellipse">
+                <Ellipse originX="0.5" originY="0.5" width="6" height="4.8" name="Path" />
+                <Fill name="Fill">
+                    <SolidColor colorValue="FF8A5A2B" name="Color" />
+                </Fill>
+            </Shape>
+            <Shape x="43" y="-19" name="circle">
+                <Ellipse originX="0.5" originY="0.5" width="17" height="17" name="Path" />
+                <Fill name="Fill">
+                    <SolidColor colorValue="FFF2B33D" name="Color" />
+                </Fill>
+                <Stroke thickness="3.2" cap="round" join="round" name="Stroke">
+                    <SolidColor colorValue="FF5C3A21" name="Color" />
+                </Stroke>
+            </Shape>
+            <Shape x="43" y="-29.5" name="path">
+                <PointsPath name="Path">
+                    <StraightVertex x="0" y="-2.5" />
+                    <StraightVertex x="0" y="2.5" />
+                </PointsPath>
+                <Stroke thickness="2.4" cap="round" join="round" name="Stroke">
+                    <SolidColor colorValue="FF5C3A21" name="Color" />
+                </Stroke>
+            </Shape>
+            <Shape x="43.5" y="-39.625" name="path">
+                <PointsPath isClosed="true" name="Path">
+                    <CubicDetachedVertex x="-26.5" y="-9.375" outRotation="0.714091" outDistance="19.8494" />
+                    <CubicDetachedVertex x="26.5" y="-9.375" inRotation="2.45928" inDistance="20.6155" />
+                    <CubicDetachedVertex x="26.5" y="-0.375" outRotation="2.45928" outDistance="20.6155" />
+                    <CubicDetachedVertex x="-26.5" y="-0.375" inRotation="0.714091" inDistance="19.8494" />
+                </PointsPath>
+                <Fill name="Fill">
+                    <SolidColor colorValue="FFD9473A" name="Color" />
+                </Fill>
+                <Stroke thickness="3.2" cap="round" join="round" name="Stroke">
+                    <SolidColor colorValue="FF5C3A21" name="Color" />
+                </Stroke>
+            </Shape>
+            <Shape x="39.5" y="-43" name="path">
+                <PointsPath name="Path">
+                    <CubicDetachedVertex x="-19.5" y="-23" outRotation="1.5708" outDistance="14" />
+                    <CubicDetachedVertex x="-27.5" y="8" inRotation="-0.785398" inDistance="9.8995" />
+                </PointsPath>
+                <PointsPath name="Path">
+                    <CubicDetachedVertex x="27.5" y="-23" outRotation="1.5708" outDistance="18" />
+                    <CubicDetachedVertex x="16.5" y="23" inRotation="-1.04272" inDistance="13.8924" />
+                </PointsPath>
+                <Stroke thickness="3.2" cap="round" join="round" name="Stroke">
+                    <SolidColor colorValue="FF5C3A21" name="Color" />
+                </Stroke>
+            </Shape>
+            <Shape x="39.5" y="-43" name="path">
+                <PointsPath isClosed="true" name="Path">
+                    <CubicDetachedVertex x="-19.5" y="-23" outRotation="1.5708" outDistance="14" />
+                    <CubicDetachedVertex x="-27.5" y="8" inRotation="-0.785398" inDistance="9.8995" outRotation="0.41241" outDistance="17.4642" />
+                    <CubicDetachedVertex x="16.5" y="23" inRotation="-2.89661" inDistance="12.3693" outRotation="-1.04272" outDistance="13.8924" />
+                    <CubicDetachedVertex x="27.5" y="-23" inRotation="1.5708" inDistance="16" />
+                </PointsPath>
+                <Fill name="Fill">
+                    <SolidColor colorValue="FFFFF4E0" name="Color" />
+                </Fill>
+            </Shape>
+            <Shape x="41.125" y="10.5" name="path">
+                <PointsPath name="Path">
+                    <CubicDetachedVertex x="2.875" y="-8.5" outRotation="1.03038" outDistance="5.83095" />
+                    <CubicDetachedVertex x="2.875" y="5.5" inRotation="-0.927295" inDistance="5" />
+                </PointsPath>
+                <PointsPath name="Path">
+                    <CubicDetachedVertex x="-5.125" y="-2.5" outRotation="1.10715" outDistance="4.47214" />
+                    <CubicDetachedVertex x="-5.125" y="8.5" inRotation="-0.982794" inDistance="3.60555" />
+                </PointsPath>
+                <Stroke thickness="2.4" cap="round" join="round" name="Stroke">
+                    <SolidColor colorValue="FF5C3A21" name="Color" />
+                </Stroke>
+            </Shape>
+            <Shape x="0.178436" y="0.11022" name="path">
+                <PointsPath isClosed="true" name="Path">
+                    <CubicDetachedVertex x="-38.1784" y="-31.1102" inRotation="2.78282" inDistance="25.632" outRotation="-0.244979" outDistance="28.8617" />
+                    <CubicDetachedVertex x="41.8216" y="-28.1102" inRotation="-2.70175" inDistance="18.7883" outRotation="0.507098" outDistance="20.5913" />
+                    <CubicDetachedVertex x="47.8216" y="27.8898" inRotation="-0.785398" inDistance="19.799" outRotation="2.63449" outDistance="20.5913" />
+                    <CubicDetachedVertex x="-44.1784" y="27.8898" inRotation="0.484478" inDistance="21.4709" outRotation="-2.63449" outDistance="20.5913" />
+                </PointsPath>
+                <Stroke thickness="3.2" cap="round" join="round" name="Stroke">
+                    <SolidColor colorValue="FF5C3A21" name="Color" />
+                </Stroke>
+            </Shape>
+            <Shape x="-24.4868" y="-17.8608" name="path">
+                <PointsPath isClosed="true" name="Path">
+                    <CubicDetachedVertex x="-19.5132" y="-6.13924" inRotation="2.55359" inDistance="7.2111" outRotation="-0.571337" outDistance="16.6433" />
+                    <CubicDetachedVertex x="24.4868" y="-6.13924" inRotation="-2.24554" inDistance="12.8062" outRotation="1.03038" outDistance="11.6619" />
+                    <CubicDetachedVertex x="6.48682" y="11.8608" inRotation="0.141897" inDistance="14.1421" outRotation="-2.97644" outDistance="12.1655" />
+                    <CubicDetachedVertex x="-25.5132" y="11.8608" inRotation="0.380506" inDistance="10.7703" outRotation="-1.81577" outDistance="8.24621" />
+                </PointsPath>
+                <Fill name="Fill">
+                    <SolidColor colorValue="FFE99A4E" name="Color" />
+                </Fill>
+            </Shape>
+            <Shape x="0.178436" y="0.11022" name="path">
+                <PointsPath isClosed="true" name="Path">
+                    <CubicDetachedVertex x="-38.1784" y="-31.1102" inRotation="2.78282" inDistance="25.632" outRotation="-0.244979" outDistance="28.8617" />
+                    <CubicDetachedVertex x="41.8216" y="-28.1102" inRotation="-2.70175" inDistance="18.7883" outRotation="0.507098" outDistance="20.5913" />
+                    <CubicDetachedVertex x="47.8216" y="27.8898" inRotation="-0.785398" inDistance="19.799" outRotation="2.63449" outDistance="20.5913" />
+                    <CubicDetachedVertex x="-44.1784" y="27.8898" inRotation="0.484478" inDistance="21.4709" outRotation="-2.63449" outDistance="20.5913" />
+                </PointsPath>
+                <Fill name="Fill">
+                    <SolidColor colorValue="FFFFF4E0" name="Color" />
+                </Fill>
+            </Shape>
+            <Node x="38" y="14" name="legFN" id="0:27">
+                <Shape x="8" y="43" name="path">
+                    <PointsPath name="Path">
+                        <StraightVertex x="-3" y="-3" />
+                        <StraightVertex x="-3" y="3" />
+                    </PointsPath>
+                    <PointsPath name="Path">
+                        <StraightVertex x="3" y="-3" />
+                        <StraightVertex x="3" y="3" />
+                    </PointsPath>
+                    <Stroke thickness="2.4" cap="round" join="round" name="Stroke">
+                        <SolidColor colorValue="FF5C3A21" name="Color" />
+                    </Stroke>
+                </Shape>
+                <Shape x="2.28679" y="16.5" name="path">
+                    <PointsPath isClosed="true" name="Path">
+                        <StraightVertex x="-14.2868" y="-30.5" />
+                        <CubicDetachedVertex x="-14.2868" y="16.5" outRotation="1.76819" outDistance="10.198" />
+                        <CubicAsymmetricVertex x="0.713205" y="30.5" rotation="0" inDistance="11" outDistance="12" />
+                        <CubicDetachedVertex x="13.7132" y="17.5" inRotation="1.21203" inDistance="8.544" />
+                        <StraightVertex x="11.7132" y="-30.5" />
+                    </PointsPath>
+                    <Fill name="Fill">
+                        <SolidColor colorValue="FFFFF4E0" name="Color" />
+                    </Fill>
+                    <Stroke thickness="3.2" cap="round" join="round" name="Stroke">
+                        <SolidColor colorValue="FF5C3A21" name="Color" />
+                    </Stroke>
+                </Shape>
+            </Node>
+            <Node x="-30" y="14" name="legBN" id="0:26">
+                <Shape x="8" y="43" name="path">
+                    <PointsPath name="Path">
+                        <StraightVertex x="-3" y="-3" />
+                        <StraightVertex x="-3" y="3" />
+                    </PointsPath>
+                    <PointsPath name="Path">
+                        <StraightVertex x="3" y="-3" />
+                        <StraightVertex x="3" y="3" />
+                    </PointsPath>
+                    <Stroke thickness="2.4" cap="round" join="round" name="Stroke">
+                        <SolidColor colorValue="FF5C3A21" name="Color" />
+                    </Stroke>
+                </Shape>
+                <Shape x="2.28679" y="16.5" name="path">
+                    <PointsPath isClosed="true" name="Path">
+                        <StraightVertex x="-14.2868" y="-30.5" />
+                        <CubicDetachedVertex x="-14.2868" y="16.5" outRotation="1.76819" outDistance="10.198" />
+                        <CubicAsymmetricVertex x="0.713205" y="30.5" rotation="0" inDistance="11" outDistance="12" />
+                        <CubicDetachedVertex x="13.7132" y="17.5" inRotation="1.21203" inDistance="8.544" />
+                        <StraightVertex x="11.7132" y="-30.5" />
+                    </PointsPath>
+                    <Fill name="Fill">
+                        <SolidColor colorValue="FFFFF4E0" name="Color" />
+                    </Fill>
+                    <Stroke thickness="3.2" cap="round" join="round" name="Stroke">
+                        <SolidColor colorValue="FF5C3A21" name="Color" />
+                    </Stroke>
+                </Shape>
+            </Node>
+            <Node x="-50" y="-16" name="tail" id="0:23">
+                <Shape x="-11" y="-30" name="path">
+                    <PointsPath name="Path">
+                        <CubicDetachedVertex x="-7" y="-10" outRotation="1.32582" outDistance="8.24621" />
+                        <CubicDetachedVertex x="7" y="10" inRotation="-2.55359" inDistance="7.2111" />
+                    </PointsPath>
+                    <Stroke thickness="2.4" cap="round" join="round" name="Stroke">
+                        <SolidColor colorValue="FF5C3A21" name="Color" />
+                    </Stroke>
+                </Shape>
+                <Shape x="-7.59059" y="-27.2341" name="path">
+                    <PointsPath isClosed="true" name="Path">
+                        <CubicDetachedVertex x="15.5906" y="33.2341" inRotation="-0.244979" inDistance="4.12311" outRotation="-2.9997" outDistance="14.1421" />
+                        <CubicMirroredVertex x="-18.4094" y="7.23409" rotation="-1.97569" distance="15.2315" />
+                        <CubicDetachedVertex x="-12.4094" y="-28.7659" inRotation="2.46685" inDistance="12.8062" outRotation="-0.694738" outDistance="7.81025" />
+                        <CubicDetachedVertex x="9.59059" y="-30.7659" inRotation="-2.55359" inDistance="7.2111" outRotation="2.81984" outDistance="6.32456" />
+                        <CubicDetachedVertex x="3.59059" y="-20.7659" inRotation="-2.03444" inDistance="4.47214" outRotation="-0.588003" outDistance="7.2111" />
+                        <CubicDetachedVertex x="19.5906" y="-16.7659" inRotation="-1.89255" inDistance="6.32456" outRotation="3.14159" outDistance="6" />
+                        <CubicDetachedVertex x="9.59059" y="-8.76591" inRotation="-1.5708" inDistance="4" outRotation="1.10715" outDistance="8.94427" />
+                        <CubicDetachedVertex x="21.5906" y="19.2341" inRotation="-1.76819" inDistance="10.198" outRotation="1.44644" outDistance="8.06226" />
+                    </PointsPath>
+                    <Fill name="Fill">
+                        <SolidColor colorValue="FFFFF4E0" name="Color" />
+                    </Fill>
+                    <Stroke thickness="3.2" cap="round" join="round" name="Stroke">
+                        <SolidColor colorValue="FF5C3A21" name="Color" />
+                    </Stroke>
+                </Shape>
+            </Node>
+            <Node x="24" y="10" name="legFF" id="0:25">
+                <Shape x="7" y="46" name="path">
+                    <PointsPath name="Path">
+                        <StraightVertex x="-3" y="-3" />
+                        <StraightVertex x="-3" y="3" />
+                    </PointsPath>
+                    <PointsPath name="Path">
+                        <StraightVertex x="3" y="-3" />
+                        <StraightVertex x="3" y="3" />
+                    </PointsPath>
+                    <Stroke thickness="2.4" cap="round" join="round" name="Stroke">
+                        <SolidColor colorValue="FF5C3A21" name="Color" />
+                    </Stroke>
+                </Shape>
+                <Shape x="2.29054" y="18" name="path">
+                    <PointsPath isClosed="true" name="Path">
+                        <StraightVertex x="-13.2905" y="-32" />
+                        <CubicDetachedVertex x="-13.2905" y="18" outRotation="1.76819" outDistance="10.198" />
+                        <CubicAsymmetricVertex x="0.709459" y="32" rotation="0" inDistance="10" outDistance="11" />
+                        <CubicDetachedVertex x="12.7095" y="19" inRotation="1.21203" inDistance="8.544" />
+                        <StraightVertex x="10.7095" y="-32" />
+                    </PointsPath>
+                    <Fill name="Fill">
+                        <SolidColor colorValue="FFF1DFC2" name="Color" />
+                    </Fill>
+                    <Stroke thickness="3.2" cap="round" join="round" name="Stroke">
+                        <SolidColor colorValue="FF5C3A21" name="Color" />
+                    </Stroke>
+                </Shape>
+            </Node>
+            <Node x="-44" y="10" name="legBF" id="0:24">
+                <Shape x="7" y="46" name="path">
+                    <PointsPath name="Path">
+                        <StraightVertex x="-3" y="-3" />
+                        <StraightVertex x="-3" y="3" />
+                    </PointsPath>
+                    <PointsPath name="Path">
+                        <StraightVertex x="3" y="-3" />
+                        <StraightVertex x="3" y="3" />
+                    </PointsPath>
+                    <Stroke thickness="2.4" cap="round" join="round" name="Stroke">
+                        <SolidColor colorValue="FF5C3A21" name="Color" />
+                    </Stroke>
+                </Shape>
+                <Shape x="2.29054" y="18" name="path">
+                    <PointsPath isClosed="true" name="Path">
+                        <StraightVertex x="-13.2905" y="-32" />
+                        <CubicDetachedVertex x="-13.2905" y="18" outRotation="1.76819" outDistance="10.198" />
+                        <CubicAsymmetricVertex x="0.709459" y="32" rotation="0" inDistance="10" outDistance="11" />
+                        <CubicDetachedVertex x="12.7095" y="19" inRotation="1.21203" inDistance="8.544" />
+                        <StraightVertex x="10.7095" y="-32" />
+                    </PointsPath>
+                    <Fill name="Fill">
+                        <SolidColor colorValue="FFF1DFC2" name="Color" />
+                    </Fill>
+                    <Stroke thickness="3.2" cap="round" join="round" name="Stroke">
+                        <SolidColor colorValue="FF5C3A21" name="Color" />
+                    </Stroke>
+                </Shape>
+            </Node>
+        </Node></Node><Shape x="308" y="401" name="Shadow" id="0:30"><Ellipse width="140" height="14" name="Path"/><Fill name="Fill"><SolidColor colorValue="30000000" name="Color"/></Fill></Shape><Node x="0" y="0" name="Ground" id="0:11"><Shape x="750" y="505" name="Dash"><Rectangle width="56" height="8" originY="0.5" cornerRadiusTL="4" cornerRadiusTR="4" cornerRadiusBL="4" cornerRadiusBR="4" name="Path"/><Fill name="Fill"><SolidColor colorValue="FFF5F0E1" name="Color"/></Fill></Shape><Shape x="630" y="505" name="Dash"><Rectangle width="56" height="8" originY="0.5" cornerRadiusTL="4" cornerRadiusTR="4" cornerRadiusBL="4" cornerRadiusBR="4" name="Path"/><Fill name="Fill"><SolidColor colorValue="FFF5F0E1" name="Color"/></Fill></Shape><Shape x="510" y="505" name="Dash"><Rectangle width="56" height="8" originY="0.5" cornerRadiusTL="4" cornerRadiusTR="4" cornerRadiusBL="4" cornerRadiusBR="4" name="Path"/><Fill name="Fill"><SolidColor colorValue="FFF5F0E1" name="Color"/></Fill></Shape><Shape x="390" y="505" name="Dash"><Rectangle width="56" height="8" originY="0.5" cornerRadiusTL="4" cornerRadiusTR="4" cornerRadiusBL="4" cornerRadiusBR="4" name="Path"/><Fill name="Fill"><SolidColor colorValue="FFF5F0E1" name="Color"/></Fill></Shape><Shape x="270" y="505" name="Dash"><Rectangle width="56" height="8" originY="0.5" cornerRadiusTL="4" cornerRadiusTR="4" cornerRadiusBL="4" cornerRadiusBR="4" name="Path"/><Fill name="Fill"><SolidColor colorValue="FFF5F0E1" name="Color"/></Fill></Shape><Shape x="150" y="505" name="Dash"><Rectangle width="56" height="8" originY="0.5" cornerRadiusTL="4" cornerRadiusTR="4" cornerRadiusBL="4" cornerRadiusBR="4" name="Path"/><Fill name="Fill"><SolidColor colorValue="FFF5F0E1" name="Color"/></Fill></Shape><Shape x="30" y="505" name="Dash"><Rectangle width="56" height="8" originY="0.5" cornerRadiusTL="4" cornerRadiusTR="4" cornerRadiusBL="4" cornerRadiusBR="4" name="Path"/><Fill name="Fill"><SolidColor colorValue="FFF5F0E1" name="Color"/></Fill></Shape><Shape x="720" y="380" name="Seam"><Rectangle width="3" height="40" originY="0.5" name="Path"/><Fill name="Fill"><SolidColor colorValue="FFC9BFAE" name="Color"/></Fill></Shape><Shape x="660" y="380" name="Seam"><Rectangle width="3" height="40" originY="0.5" name="Path"/><Fill name="Fill"><SolidColor colorValue="FFC9BFAE" name="Color"/></Fill></Shape><Shape x="600" y="380" name="Seam"><Rectangle width="3" height="40" originY="0.5" name="Path"/><Fill name="Fill"><SolidColor colorValue="FFC9BFAE" name="Color"/></Fill></Shape><Shape x="540" y="380" name="Seam"><Rectangle width="3" height="40" originY="0.5" name="Path"/><Fill name="Fill"><SolidColor colorValue="FFC9BFAE" name="Color"/></Fill></Shape><Shape x="480" y="380" name="Seam"><Rectangle width="3" height="40" originY="0.5" name="Path"/><Fill name="Fill"><SolidColor colorValue="FFC9BFAE" name="Color"/></Fill></Shape><Shape x="420" y="380" name="Seam"><Rectangle width="3" height="40" originY="0.5" name="Path"/><Fill name="Fill"><SolidColor colorValue="FFC9BFAE" name="Color"/></Fill></Shape><Shape x="360" y="380" name="Seam"><Rectangle width="3" height="40" originY="0.5" name="Path"/><Fill name="Fill"><SolidColor colorValue="FFC9BFAE" name="Color"/></Fill></Shape><Shape x="300" y="380" name="Seam"><Rectangle width="3" height="40" originY="0.5" name="Path"/><Fill name="Fill"><SolidColor colorValue="FFC9BFAE" name="Color"/></Fill></Shape><Shape x="240" y="380" name="Seam"><Rectangle width="3" height="40" originY="0.5" name="Path"/><Fill name="Fill"><SolidColor colorValue="FFC9BFAE" name="Color"/></Fill></Shape><Shape x="180" y="380" name="Seam"><Rectangle width="3" height="40" originY="0.5" name="Path"/><Fill name="Fill"><SolidColor colorValue="FFC9BFAE" name="Color"/></Fill></Shape><Shape x="120" y="380" name="Seam"><Rectangle width="3" height="40" originY="0.5" name="Path"/><Fill name="Fill"><SolidColor colorValue="FFC9BFAE" name="Color"/></Fill></Shape><Shape x="60" y="380" name="Seam"><Rectangle width="3" height="40" originY="0.5" name="Path"/><Fill name="Fill"><SolidColor colorValue="FFC9BFAE" name="Color"/></Fill></Shape><Shape x="0" y="380" name="Seam"><Rectangle width="3" height="40" originY="0.5" name="Path"/><Fill name="Fill"><SolidColor colorValue="FFC9BFAE" name="Color"/></Fill></Shape></Node><Shape x="300.0" y="508" name="Road"><Rectangle width="600" height="200" originY="0.5" name="Path"/><Fill name="Fill"><SolidColor colorValue="FF5B5F6B" name="Color"/></Fill></Shape><Shape x="300.0" y="404" name="Curb"><Rectangle width="600" height="8" originY="0.5" name="Path"/><Fill name="Fill"><SolidColor colorValue="FFB8AE9C" name="Color"/></Fill></Shape><Shape x="300.0" y="380" name="Sidewalk"><Rectangle width="600" height="40" originY="0.5" name="Path"/><Fill name="Fill"><SolidColor colorValue="FFE3DCCF" name="Color"/></Fill></Shape><Node x="0" y="0" name="City" id="0:10"><Shape x="925" y="322" name="Window"><Rectangle width="12" height="14" originY="0.5" cornerRadiusTL="2" cornerRadiusTR="2" cornerRadiusBL="2" cornerRadiusBR="2" name="Path"/><Fill name="Fill"><SolidColor colorValue="B3FFFFFF" name="Color"/></Fill></Shape><Shape x="925" y="292" name="Window"><Rectangle width="12" height="14" originY="0.5" cornerRadiusTL="2" cornerRadiusTR="2" cornerRadiusBL="2" cornerRadiusBR="2" name="Path"/><Fill name="Fill"><SolidColor colorValue="B3FFFFFF" name="Color"/></Fill></Shape><Shape x="925" y="315.0" name="Building"><Rectangle width="40" height="90" originY="0.5" cornerRadiusTL="6" cornerRadiusTR="6" cornerRadiusBL="6" cornerRadiusBR="6" name="Path"/><Fill name="Fill"><SolidColor colorValue="FF9EC1E8" name="Color"/></Fill></Shape><Shape x="881" y="322" name="Window"><Rectangle width="12" height="14" originY="0.5" cornerRadiusTL="2" cornerRadiusTR="2" cornerRadiusBL="2" cornerRadiusBR="2" name="Path"/><Fill name="Fill"><SolidColor colorValue="B3FFFFFF" name="Color"/></Fill></Shape><Shape x="881" y="292" name="Window"><Rectangle width="12" height="14" originY="0.5" cornerRadiusTL="2" cornerRadiusTR="2" cornerRadiusBL="2" cornerRadiusBR="2" name="Path"/><Fill name="Fill"><SolidColor colorValue="B3FFFFFF" name="Color"/></Fill></Shape><Shape x="881" y="262" name="Window"><Rectangle width="12" height="14" originY="0.5" cornerRadiusTL="2" cornerRadiusTR="2" cornerRadiusBL="2" cornerRadiusBR="2" name="Path"/><Fill name="Fill"><SolidColor colorValue="B3FFFFFF" name="Color"/></Fill></Shape><Shape x="859" y="322" name="Window"><Rectangle width="12" height="14" originY="0.5" cornerRadiusTL="2" cornerRadiusTR="2" cornerRadiusBL="2" cornerRadiusBR="2" name="Path"/><Fill name="Fill"><SolidColor colorValue="B3FFFFFF" name="Color"/></Fill></Shape><Shape x="859" y="292" name="Window"><Rectangle width="12" height="14" originY="0.5" cornerRadiusTL="2" cornerRadiusTR="2" cornerRadiusBL="2" cornerRadiusBR="2" name="Path"/><Fill name="Fill"><SolidColor colorValue="B3FFFFFF" name="Color"/></Fill></Shape><Shape x="859" y="262" name="Window"><Rectangle width="12" height="14" originY="0.5" cornerRadiusTL="2" cornerRadiusTR="2" cornerRadiusBL="2" cornerRadiusBR="2" name="Path"/><Fill name="Fill"><SolidColor colorValue="B3FFFFFF" name="Color"/></Fill></Shape><Shape x="870" y="300.0" name="Building"><Rectangle width="70" height="120" originY="0.5" cornerRadiusTL="6" cornerRadiusTR="6" cornerRadiusBL="6" cornerRadiusBR="6" name="Path"/><Fill name="Fill"><SolidColor colorValue="FFA8D5BA" name="Color"/></Fill></Shape><Shape x="782" y="302" name="Window"><Rectangle width="12" height="14" originY="0.5" cornerRadiusTL="2" cornerRadiusTR="2" cornerRadiusBL="2" cornerRadiusBR="2" name="Path"/><Fill name="Fill"><SolidColor colorValue="B3FFFFFF" name="Color"/></Fill></Shape><Shape x="782" y="272" name="Window"><Rectangle width="12" height="14" originY="0.5" cornerRadiusTL="2" cornerRadiusTR="2" cornerRadiusBL="2" cornerRadiusBR="2" name="Path"/><Fill name="Fill"><SolidColor colorValue="B3FFFFFF" name="Color"/></Fill></Shape><Shape x="782" y="242" name="Window"><Rectangle width="12" height="14" originY="0.5" cornerRadiusTL="2" cornerRadiusTR="2" cornerRadiusBL="2" cornerRadiusBR="2" name="Path"/><Fill name="Fill"><SolidColor colorValue="B3FFFFFF" name="Color"/></Fill></Shape><Shape x="782" y="212" name="Window"><Rectangle width="12" height="14" originY="0.5" cornerRadiusTL="2" cornerRadiusTR="2" cornerRadiusBL="2" cornerRadiusBR="2" name="Path"/><Fill name="Fill"><SolidColor colorValue="B3FFFFFF" name="Color"/></Fill></Shape><Shape x="760" y="302" name="Window"><Rectangle width="12" height="14" originY="0.5" cornerRadiusTL="2" cornerRadiusTR="2" cornerRadiusBL="2" cornerRadiusBR="2" name="Path"/><Fill name="Fill"><SolidColor colorValue="B3FFFFFF" name="Color"/></Fill></Shape><Shape x="760" y="272" name="Window"><Rectangle width="12" height="14" originY="0.5" cornerRadiusTL="2" cornerRadiusTR="2" cornerRadiusBL="2" cornerRadiusBR="2" name="Path"/><Fill name="Fill"><SolidColor colorValue="B3FFFFFF" name="Color"/></Fill></Shape><Shape x="760" y="242" name="Window"><Rectangle width="12" height="14" originY="0.5" cornerRadiusTL="2" cornerRadiusTR="2" cornerRadiusBL="2" cornerRadiusBR="2" name="Path"/><Fill name="Fill"><SolidColor colorValue="B3FFFFFF" name="Color"/></Fill></Shape><Shape x="760" y="212" name="Window"><Rectangle width="12" height="14" originY="0.5" cornerRadiusTL="2" cornerRadiusTR="2" cornerRadiusBL="2" cornerRadiusBR="2" name="Path"/><Fill name="Fill"><SolidColor colorValue="B3FFFFFF" name="Color"/></Fill></Shape><Shape x="738" y="302" name="Window"><Rectangle width="12" height="14" originY="0.5" cornerRadiusTL="2" cornerRadiusTR="2" cornerRadiusBL="2" cornerRadiusBR="2" name="Path"/><Fill name="Fill"><SolidColor colorValue="B3FFFFFF" name="Color"/></Fill></Shape><Shape x="738" y="272" name="Window"><Rectangle width="12" height="14" originY="0.5" cornerRadiusTL="2" cornerRadiusTR="2" cornerRadiusBL="2" cornerRadiusBR="2" name="Path"/><Fill name="Fill"><SolidColor colorValue="B3FFFFFF" name="Color"/></Fill></Shape><Shape x="738" y="242" name="Window"><Rectangle width="12" height="14" originY="0.5" cornerRadiusTL="2" cornerRadiusTR="2" cornerRadiusBL="2" cornerRadiusBR="2" name="Path"/><Fill name="Fill"><SolidColor colorValue="B3FFFFFF" name="Color"/></Fill></Shape><Shape x="738" y="212" name="Window"><Rectangle width="12" height="14" originY="0.5" cornerRadiusTL="2" cornerRadiusTR="2" cornerRadiusBL="2" cornerRadiusBR="2" name="Path"/><Fill name="Fill"><SolidColor colorValue="B3FFFFFF" name="Color"/></Fill></Shape><Shape x="760" y="275.0" name="Building"><Rectangle width="90" height="170" originY="0.5" cornerRadiusTL="6" cornerRadiusTR="6" cornerRadiusBL="6" cornerRadiusBR="6" name="Path"/><Fill name="Fill"><SolidColor colorValue="FFF4A99B" name="Color"/></Fill></Shape><Shape x="685" y="322" name="Window"><Rectangle width="12" height="14" originY="0.5" cornerRadiusTL="2" cornerRadiusTR="2" cornerRadiusBL="2" cornerRadiusBR="2" name="Path"/><Fill name="Fill"><SolidColor colorValue="B3FFFFFF" name="Color"/></Fill></Shape><Shape x="685" y="292" name="Window"><Rectangle width="12" height="14" originY="0.5" cornerRadiusTL="2" cornerRadiusTR="2" cornerRadiusBL="2" cornerRadiusBR="2" name="Path"/><Fill name="Fill"><SolidColor colorValue="B3FFFFFF" name="Color"/></Fill></Shape><Shape x="685" y="315.0" name="Building"><Rectangle width="40" height="90" originY="0.5" cornerRadiusTL="6" cornerRadiusTR="6" cornerRadiusBL="6" cornerRadiusBR="6" name="Path"/><Fill name="Fill"><SolidColor colorValue="FF9EC1E8" name="Color"/></Fill></Shape><Shape x="641" y="322" name="Window"><Rectangle width="12" height="14" originY="0.5" cornerRadiusTL="2" cornerRadiusTR="2" cornerRadiusBL="2" cornerRadiusBR="2" name="Path"/><Fill name="Fill"><SolidColor colorValue="B3FFFFFF" name="Color"/></Fill></Shape><Shape x="641" y="292" name="Window"><Rectangle width="12" height="14" originY="0.5" cornerRadiusTL="2" cornerRadiusTR="2" cornerRadiusBL="2" cornerRadiusBR="2" name="Path"/><Fill name="Fill"><SolidColor colorValue="B3FFFFFF" name="Color"/></Fill></Shape><Shape x="641" y="262" name="Window"><Rectangle width="12" height="14" originY="0.5" cornerRadiusTL="2" cornerRadiusTR="2" cornerRadiusBL="2" cornerRadiusBR="2" name="Path"/><Fill name="Fill"><SolidColor colorValue="B3FFFFFF" name="Color"/></Fill></Shape><Shape x="619" y="322" name="Window"><Rectangle width="12" height="14" originY="0.5" cornerRadiusTL="2" cornerRadiusTR="2" cornerRadiusBL="2" cornerRadiusBR="2" name="Path"/><Fill name="Fill"><SolidColor colorValue="B3FFFFFF" name="Color"/></Fill></Shape><Shape x="619" y="292" name="Window"><Rectangle width="12" height="14" originY="0.5" cornerRadiusTL="2" cornerRadiusTR="2" cornerRadiusBL="2" cornerRadiusBR="2" name="Path"/><Fill name="Fill"><SolidColor colorValue="B3FFFFFF" name="Color"/></Fill></Shape><Shape x="619" y="262" name="Window"><Rectangle width="12" height="14" originY="0.5" cornerRadiusTL="2" cornerRadiusTR="2" cornerRadiusBL="2" cornerRadiusBR="2" name="Path"/><Fill name="Fill"><SolidColor colorValue="B3FFFFFF" name="Color"/></Fill></Shape><Shape x="630" y="300.0" name="Building"><Rectangle width="70" height="120" originY="0.5" cornerRadiusTL="6" cornerRadiusTR="6" cornerRadiusBL="6" cornerRadiusBR="6" name="Path"/><Fill name="Fill"><SolidColor colorValue="FFA8D5BA" name="Color"/></Fill></Shape><Shape x="542" y="302" name="Window"><Rectangle width="12" height="14" originY="0.5" cornerRadiusTL="2" cornerRadiusTR="2" cornerRadiusBL="2" cornerRadiusBR="2" name="Path"/><Fill name="Fill"><SolidColor colorValue="B3FFFFFF" name="Color"/></Fill></Shape><Shape x="542" y="272" name="Window"><Rectangle width="12" height="14" originY="0.5" cornerRadiusTL="2" cornerRadiusTR="2" cornerRadiusBL="2" cornerRadiusBR="2" name="Path"/><Fill name="Fill"><SolidColor colorValue="B3FFFFFF" name="Color"/></Fill></Shape><Shape x="542" y="242" name="Window"><Rectangle width="12" height="14" originY="0.5" cornerRadiusTL="2" cornerRadiusTR="2" cornerRadiusBL="2" cornerRadiusBR="2" name="Path"/><Fill name="Fill"><SolidColor colorValue="B3FFFFFF" name="Color"/></Fill></Shape><Shape x="542" y="212" name="Window"><Rectangle width="12" height="14" originY="0.5" cornerRadiusTL="2" cornerRadiusTR="2" cornerRadiusBL="2" cornerRadiusBR="2" name="Path"/><Fill name="Fill"><SolidColor colorValue="B3FFFFFF" name="Color"/></Fill></Shape><Shape x="520" y="302" name="Window"><Rectangle width="12" height="14" originY="0.5" cornerRadiusTL="2" cornerRadiusTR="2" cornerRadiusBL="2" cornerRadiusBR="2" name="Path"/><Fill name="Fill"><SolidColor colorValue="B3FFFFFF" name="Color"/></Fill></Shape><Shape x="520" y="272" name="Window"><Rectangle width="12" height="14" originY="0.5" cornerRadiusTL="2" cornerRadiusTR="2" cornerRadiusBL="2" cornerRadiusBR="2" name="Path"/><Fill name="Fill"><SolidColor colorValue="B3FFFFFF" name="Color"/></Fill></Shape><Shape x="520" y="242" name="Window"><Rectangle width="12" height="14" originY="0.5" cornerRadiusTL="2" cornerRadiusTR="2" cornerRadiusBL="2" cornerRadiusBR="2" name="Path"/><Fill name="Fill"><SolidColor colorValue="B3FFFFFF" name="Color"/></Fill></Shape><Shape x="520" y="212" name="Window"><Rectangle width="12" height="14" originY="0.5" cornerRadiusTL="2" cornerRadiusTR="2" cornerRadiusBL="2" cornerRadiusBR="2" name="Path"/><Fill name="Fill"><SolidColor colorValue="B3FFFFFF" name="Color"/></Fill></Shape><Shape x="498" y="302" name="Window"><Rectangle width="12" height="14" originY="0.5" cornerRadiusTL="2" cornerRadiusTR="2" cornerRadiusBL="2" cornerRadiusBR="2" name="Path"/><Fill name="Fill"><SolidColor colorValue="B3FFFFFF" name="Color"/></Fill></Shape><Shape x="498" y="272" name="Window"><Rectangle width="12" height="14" originY="0.5" cornerRadiusTL="2" cornerRadiusTR="2" cornerRadiusBL="2" cornerRadiusBR="2" name="Path"/><Fill name="Fill"><SolidColor colorValue="B3FFFFFF" name="Color"/></Fill></Shape><Shape x="498" y="242" name="Window"><Rectangle width="12" height="14" originY="0.5" cornerRadiusTL="2" cornerRadiusTR="2" cornerRadiusBL="2" cornerRadiusBR="2" name="Path"/><Fill name="Fill"><SolidColor colorValue="B3FFFFFF" name="Color"/></Fill></Shape><Shape x="498" y="212" name="Window"><Rectangle width="12" height="14" originY="0.5" cornerRadiusTL="2" cornerRadiusTR="2" cornerRadiusBL="2" cornerRadiusBR="2" name="Path"/><Fill name="Fill"><SolidColor colorValue="B3FFFFFF" name="Color"/></Fill></Shape><Shape x="520" y="275.0" name="Building"><Rectangle width="90" height="170" originY="0.5" cornerRadiusTL="6" cornerRadiusTR="6" cornerRadiusBL="6" cornerRadiusBR="6" name="Path"/><Fill name="Fill"><SolidColor colorValue="FFF4A99B" name="Color"/></Fill></Shape><Shape x="445" y="322" name="Window"><Rectangle width="12" height="14" originY="0.5" cornerRadiusTL="2" cornerRadiusTR="2" cornerRadiusBL="2" cornerRadiusBR="2" name="Path"/><Fill name="Fill"><SolidColor colorValue="B3FFFFFF" name="Color"/></Fill></Shape><Shape x="445" y="292" name="Window"><Rectangle width="12" height="14" originY="0.5" cornerRadiusTL="2" cornerRadiusTR="2" cornerRadiusBL="2" cornerRadiusBR="2" name="Path"/><Fill name="Fill"><SolidColor colorValue="B3FFFFFF" name="Color"/></Fill></Shape><Shape x="445" y="315.0" name="Building"><Rectangle width="40" height="90" originY="0.5" cornerRadiusTL="6" cornerRadiusTR="6" cornerRadiusBL="6" cornerRadiusBR="6" name="Path"/><Fill name="Fill"><SolidColor colorValue="FF9EC1E8" name="Color"/></Fill></Shape><Shape x="401" y="322" name="Window"><Rectangle width="12" height="14" originY="0.5" cornerRadiusTL="2" cornerRadiusTR="2" cornerRadiusBL="2" cornerRadiusBR="2" name="Path"/><Fill name="Fill"><SolidColor colorValue="B3FFFFFF" name="Color"/></Fill></Shape><Shape x="401" y="292" name="Window"><Rectangle width="12" height="14" originY="0.5" cornerRadiusTL="2" cornerRadiusTR="2" cornerRadiusBL="2" cornerRadiusBR="2" name="Path"/><Fill name="Fill"><SolidColor colorValue="B3FFFFFF" name="Color"/></Fill></Shape><Shape x="401" y="262" name="Window"><Rectangle width="12" height="14" originY="0.5" cornerRadiusTL="2" cornerRadiusTR="2" cornerRadiusBL="2" cornerRadiusBR="2" name="Path"/><Fill name="Fill"><SolidColor colorValue="B3FFFFFF" name="Color"/></Fill></Shape><Shape x="379" y="322" name="Window"><Rectangle width="12" height="14" originY="0.5" cornerRadiusTL="2" cornerRadiusTR="2" cornerRadiusBL="2" cornerRadiusBR="2" name="Path"/><Fill name="Fill"><SolidColor colorValue="B3FFFFFF" name="Color"/></Fill></Shape><Shape x="379" y="292" name="Window"><Rectangle width="12" height="14" originY="0.5" cornerRadiusTL="2" cornerRadiusTR="2" cornerRadiusBL="2" cornerRadiusBR="2" name="Path"/><Fill name="Fill"><SolidColor colorValue="B3FFFFFF" name="Color"/></Fill></Shape><Shape x="379" y="262" name="Window"><Rectangle width="12" height="14" originY="0.5" cornerRadiusTL="2" cornerRadiusTR="2" cornerRadiusBL="2" cornerRadiusBR="2" name="Path"/><Fill name="Fill"><SolidColor colorValue="B3FFFFFF" name="Color"/></Fill></Shape><Shape x="390" y="300.0" name="Building"><Rectangle width="70" height="120" originY="0.5" cornerRadiusTL="6" cornerRadiusTR="6" cornerRadiusBL="6" cornerRadiusBR="6" name="Path"/><Fill name="Fill"><SolidColor colorValue="FFA8D5BA" name="Color"/></Fill></Shape><Shape x="302" y="302" name="Window"><Rectangle width="12" height="14" originY="0.5" cornerRadiusTL="2" cornerRadiusTR="2" cornerRadiusBL="2" cornerRadiusBR="2" name="Path"/><Fill name="Fill"><SolidColor colorValue="B3FFFFFF" name="Color"/></Fill></Shape><Shape x="302" y="272" name="Window"><Rectangle width="12" height="14" originY="0.5" cornerRadiusTL="2" cornerRadiusTR="2" cornerRadiusBL="2" cornerRadiusBR="2" name="Path"/><Fill name="Fill"><SolidColor colorValue="B3FFFFFF" name="Color"/></Fill></Shape><Shape x="302" y="242" name="Window"><Rectangle width="12" height="14" originY="0.5" cornerRadiusTL="2" cornerRadiusTR="2" cornerRadiusBL="2" cornerRadiusBR="2" name="Path"/><Fill name="Fill"><SolidColor colorValue="B3FFFFFF" name="Color"/></Fill></Shape><Shape x="302" y="212" name="Window"><Rectangle width="12" height="14" originY="0.5" cornerRadiusTL="2" cornerRadiusTR="2" cornerRadiusBL="2" cornerRadiusBR="2" name="Path"/><Fill name="Fill"><SolidColor colorValue="B3FFFFFF" name="Color"/></Fill></Shape><Shape x="280" y="302" name="Window"><Rectangle width="12" height="14" originY="0.5" cornerRadiusTL="2" cornerRadiusTR="2" cornerRadiusBL="2" cornerRadiusBR="2" name="Path"/><Fill name="Fill"><SolidColor colorValue="B3FFFFFF" name="Color"/></Fill></Shape><Shape x="280" y="272" name="Window"><Rectangle width="12" height="14" originY="0.5" cornerRadiusTL="2" cornerRadiusTR="2" cornerRadiusBL="2" cornerRadiusBR="2" name="Path"/><Fill name="Fill"><SolidColor colorValue="B3FFFFFF" name="Color"/></Fill></Shape><Shape x="280" y="242" name="Window"><Rectangle width="12" height="14" originY="0.5" cornerRadiusTL="2" cornerRadiusTR="2" cornerRadiusBL="2" cornerRadiusBR="2" name="Path"/><Fill name="Fill"><SolidColor colorValue="B3FFFFFF" name="Color"/></Fill></Shape><Shape x="280" y="212" name="Window"><Rectangle width="12" height="14" originY="0.5" cornerRadiusTL="2" cornerRadiusTR="2" cornerRadiusBL="2" cornerRadiusBR="2" name="Path"/><Fill name="Fill"><SolidColor colorValue="B3FFFFFF" name="Color"/></Fill></Shape><Shape x="258" y="302" name="Window"><Rectangle width="12" height="14" originY="0.5" cornerRadiusTL="2" cornerRadiusTR="2" cornerRadiusBL="2" cornerRadiusBR="2" name="Path"/><Fill name="Fill"><SolidColor colorValue="B3FFFFFF" name="Color"/></Fill></Shape><Shape x="258" y="272" name="Window"><Rectangle width="12" height="14" originY="0.5" cornerRadiusTL="2" cornerRadiusTR="2" cornerRadiusBL="2" cornerRadiusBR="2" name="Path"/><Fill name="Fill"><SolidColor colorValue="B3FFFFFF" name="Color"/></Fill></Shape><Shape x="258" y="242" name="Window"><Rectangle width="12" height="14" originY="0.5" cornerRadiusTL="2" cornerRadiusTR="2" cornerRadiusBL="2" cornerRadiusBR="2" name="Path"/><Fill name="Fill"><SolidColor colorValue="B3FFFFFF" name="Color"/></Fill></Shape><Shape x="258" y="212" name="Window"><Rectangle width="12" height="14" originY="0.5" cornerRadiusTL="2" cornerRadiusTR="2" cornerRadiusBL="2" cornerRadiusBR="2" name="Path"/><Fill name="Fill"><SolidColor colorValue="B3FFFFFF" name="Color"/></Fill></Shape><Shape x="280" y="275.0" name="Building"><Rectangle width="90" height="170" originY="0.5" cornerRadiusTL="6" cornerRadiusTR="6" cornerRadiusBL="6" cornerRadiusBR="6" name="Path"/><Fill name="Fill"><SolidColor colorValue="FFF4A99B" name="Color"/></Fill></Shape><Shape x="205" y="322" name="Window"><Rectangle width="12" height="14" originY="0.5" cornerRadiusTL="2" cornerRadiusTR="2" cornerRadiusBL="2" cornerRadiusBR="2" name="Path"/><Fill name="Fill"><SolidColor colorValue="B3FFFFFF" name="Color"/></Fill></Shape><Shape x="205" y="292" name="Window"><Rectangle width="12" height="14" originY="0.5" cornerRadiusTL="2" cornerRadiusTR="2" cornerRadiusBL="2" cornerRadiusBR="2" name="Path"/><Fill name="Fill"><SolidColor colorValue="B3FFFFFF" name="Color"/></Fill></Shape><Shape x="205" y="315.0" name="Building"><Rectangle width="40" height="90" originY="0.5" cornerRadiusTL="6" cornerRadiusTR="6" cornerRadiusBL="6" cornerRadiusBR="6" name="Path"/><Fill name="Fill"><SolidColor colorValue="FF9EC1E8" name="Color"/></Fill></Shape><Shape x="161" y="322" name="Window"><Rectangle width="12" height="14" originY="0.5" cornerRadiusTL="2" cornerRadiusTR="2" cornerRadiusBL="2" cornerRadiusBR="2" name="Path"/><Fill name="Fill"><SolidColor colorValue="B3FFFFFF" name="Color"/></Fill></Shape><Shape x="161" y="292" name="Window"><Rectangle width="12" height="14" originY="0.5" cornerRadiusTL="2" cornerRadiusTR="2" cornerRadiusBL="2" cornerRadiusBR="2" name="Path"/><Fill name="Fill"><SolidColor colorValue="B3FFFFFF" name="Color"/></Fill></Shape><Shape x="161" y="262" name="Window"><Rectangle width="12" height="14" originY="0.5" cornerRadiusTL="2" cornerRadiusTR="2" cornerRadiusBL="2" cornerRadiusBR="2" name="Path"/><Fill name="Fill"><SolidColor colorValue="B3FFFFFF" name="Color"/></Fill></Shape><Shape x="139" y="322" name="Window"><Rectangle width="12" height="14" originY="0.5" cornerRadiusTL="2" cornerRadiusTR="2" cornerRadiusBL="2" cornerRadiusBR="2" name="Path"/><Fill name="Fill"><SolidColor colorValue="B3FFFFFF" name="Color"/></Fill></Shape><Shape x="139" y="292" name="Window"><Rectangle width="12" height="14" originY="0.5" cornerRadiusTL="2" cornerRadiusTR="2" cornerRadiusBL="2" cornerRadiusBR="2" name="Path"/><Fill name="Fill"><SolidColor colorValue="B3FFFFFF" name="Color"/></Fill></Shape><Shape x="139" y="262" name="Window"><Rectangle width="12" height="14" originY="0.5" cornerRadiusTL="2" cornerRadiusTR="2" cornerRadiusBL="2" cornerRadiusBR="2" name="Path"/><Fill name="Fill"><SolidColor colorValue="B3FFFFFF" name="Color"/></Fill></Shape><Shape x="150" y="300.0" name="Building"><Rectangle width="70" height="120" originY="0.5" cornerRadiusTL="6" cornerRadiusTR="6" cornerRadiusBL="6" cornerRadiusBR="6" name="Path"/><Fill name="Fill"><SolidColor colorValue="FFA8D5BA" name="Color"/></Fill></Shape><Shape x="62" y="302" name="Window"><Rectangle width="12" height="14" originY="0.5" cornerRadiusTL="2" cornerRadiusTR="2" cornerRadiusBL="2" cornerRadiusBR="2" name="Path"/><Fill name="Fill"><SolidColor colorValue="B3FFFFFF" name="Color"/></Fill></Shape><Shape x="62" y="272" name="Window"><Rectangle width="12" height="14" originY="0.5" cornerRadiusTL="2" cornerRadiusTR="2" cornerRadiusBL="2" cornerRadiusBR="2" name="Path"/><Fill name="Fill"><SolidColor colorValue="B3FFFFFF" name="Color"/></Fill></Shape><Shape x="62" y="242" name="Window"><Rectangle width="12" height="14" originY="0.5" cornerRadiusTL="2" cornerRadiusTR="2" cornerRadiusBL="2" cornerRadiusBR="2" name="Path"/><Fill name="Fill"><SolidColor colorValue="B3FFFFFF" name="Color"/></Fill></Shape><Shape x="62" y="212" name="Window"><Rectangle width="12" height="14" originY="0.5" cornerRadiusTL="2" cornerRadiusTR="2" cornerRadiusBL="2" cornerRadiusBR="2" name="Path"/><Fill name="Fill"><SolidColor colorValue="B3FFFFFF" name="Color"/></Fill></Shape><Shape x="40" y="302" name="Window"><Rectangle width="12" height="14" originY="0.5" cornerRadiusTL="2" cornerRadiusTR="2" cornerRadiusBL="2" cornerRadiusBR="2" name="Path"/><Fill name="Fill"><SolidColor colorValue="B3FFFFFF" name="Color"/></Fill></Shape><Shape x="40" y="272" name="Window"><Rectangle width="12" height="14" originY="0.5" cornerRadiusTL="2" cornerRadiusTR="2" cornerRadiusBL="2" cornerRadiusBR="2" name="Path"/><Fill name="Fill"><SolidColor colorValue="B3FFFFFF" name="Color"/></Fill></Shape><Shape x="40" y="242" name="Window"><Rectangle width="12" height="14" originY="0.5" cornerRadiusTL="2" cornerRadiusTR="2" cornerRadiusBL="2" cornerRadiusBR="2" name="Path"/><Fill name="Fill"><SolidColor colorValue="B3FFFFFF" name="Color"/></Fill></Shape><Shape x="40" y="212" name="Window"><Rectangle width="12" height="14" originY="0.5" cornerRadiusTL="2" cornerRadiusTR="2" cornerRadiusBL="2" cornerRadiusBR="2" name="Path"/><Fill name="Fill"><SolidColor colorValue="B3FFFFFF" name="Color"/></Fill></Shape><Shape x="18" y="302" name="Window"><Rectangle width="12" height="14" originY="0.5" cornerRadiusTL="2" cornerRadiusTR="2" cornerRadiusBL="2" cornerRadiusBR="2" name="Path"/><Fill name="Fill"><SolidColor colorValue="B3FFFFFF" name="Color"/></Fill></Shape><Shape x="18" y="272" name="Window"><Rectangle width="12" height="14" originY="0.5" cornerRadiusTL="2" cornerRadiusTR="2" cornerRadiusBL="2" cornerRadiusBR="2" name="Path"/><Fill name="Fill"><SolidColor colorValue="B3FFFFFF" name="Color"/></Fill></Shape><Shape x="18" y="242" name="Window"><Rectangle width="12" height="14" originY="0.5" cornerRadiusTL="2" cornerRadiusTR="2" cornerRadiusBL="2" cornerRadiusBR="2" name="Path"/><Fill name="Fill"><SolidColor colorValue="B3FFFFFF" name="Color"/></Fill></Shape><Shape x="18" y="212" name="Window"><Rectangle width="12" height="14" originY="0.5" cornerRadiusTL="2" cornerRadiusTR="2" cornerRadiusBL="2" cornerRadiusBR="2" name="Path"/><Fill name="Fill"><SolidColor colorValue="B3FFFFFF" name="Color"/></Fill></Shape><Shape x="40" y="275.0" name="Building"><Rectangle width="90" height="170" originY="0.5" cornerRadiusTL="6" cornerRadiusTR="6" cornerRadiusBL="6" cornerRadiusBR="6" name="Path"/><Fill name="Fill"><SolidColor colorValue="FFF4A99B" name="Color"/></Fill></Shape></Node><Shape x="400" y="160" name="Cloud"><Ellipse width="90" height="30" name="Path"/><Fill name="Fill"><SolidColor colorValue="F0FFFFFF" name="Color"/></Fill></Shape><Shape x="165" y="80" name="Cloud"><Ellipse width="70" height="44" name="Path"/><Fill name="Fill"><SolidColor colorValue="FFFFFFFF" name="Color"/></Fill></Shape><Shape x="130" y="95" name="Cloud"><Ellipse width="110" height="40" name="Path"/><Fill name="Fill"><SolidColor colorValue="FFFFFFFF" name="Color"/></Fill></Shape><Shape x="480" y="105" name="Sun"><Ellipse width="74" height="74" name="Path"/><Fill name="Fill"><SolidColor colorValue="FFFFE08A" name="Color"/></Fill></Shape>
+<StateMachine name="Puppy" id="0:4"><StateMachineLayer name="City" id="0:103"><AnyState x="200" y="-120"/><ExitState x="400" y="-120"/><EntryState><StateTransition stateToId="0:102"/></EntryState><AnimationState x="200" animationId="0:40" id="0:102"/></StateMachineLayer><StateMachineLayer name="Ground" id="0:105"><AnyState x="200" y="-120"/><ExitState x="400" y="-120"/><EntryState><StateTransition stateToId="0:104"/></EntryState><AnimationState x="200" animationId="0:41" id="0:104"/></StateMachineLayer><StateMachineLayer name="Puppy" id="0:106"><AnyState x="200" y="-120"/><ExitState x="400" y="-120"/><EntryState><StateTransition stateToId="0:50"/></EntryState><AnimationState x="200" animationId="0:42" id="0:50"><StateTransition stateToId="0:51" duration="80"><TransitionViewModelCondition><TransitionPropertyViewModelComparator><BindablePropertyTrigger><DataBindContext sourcePathIds="0:60-0:61" propertyKey="686"/></BindablePropertyTrigger></TransitionPropertyViewModelComparator><TransitionValueTriggerComparator/></TransitionViewModelCondition></StateTransition></AnimationState><AnimationState x="200" y="150" animationId="0:43" id="0:51"><StateTransition stateToId="0:50" duration="150" enableExitTime="true" exitTimeIsPercetange="true" exitTime="100"/></AnimationState></StateMachineLayer><StateMachineListenerSingle targetId="0:2" listenerTypeValue="down" name="Tap To Jump" id="0:101"><ListenerViewModelChange><BindablePropertyTrigger propertyValue="1"><DataBindContext sourcePathIds="0:60-0:61" propertyKey="686" direction="true"/></BindablePropertyTrigger></ListenerViewModelChange></StateMachineListenerSingle></StateMachine>
+<LinearAnimation name="Walk" loopValue="loop" duration="60" fps="60" id="0:42"><KeyedObject objectId="0:27"><KeyedProperty property="rotation"><KeyFrameDouble frame="0" value="0.32" interpolationType="cubic"><CubicEaseInterpolator x1="0.42" y1="0" x2="0.58" y2="1"/></KeyFrameDouble><KeyFrameDouble frame="30" value="-0.32" interpolationType="cubic"><CubicEaseInterpolator x1="0.42" y1="0" x2="0.58" y2="1"/></KeyFrameDouble><KeyFrameDouble frame="60" value="0.32" interpolationType="cubic"><CubicEaseInterpolator x1="0.42" y1="0" x2="0.58" y2="1"/></KeyFrameDouble></KeyedProperty></KeyedObject><KeyedObject objectId="0:24"><KeyedProperty property="rotation"><KeyFrameDouble frame="0" value="0.32" interpolationType="cubic"><CubicEaseInterpolator x1="0.42" y1="0" x2="0.58" y2="1"/></KeyFrameDouble><KeyFrameDouble frame="30" value="-0.32" interpolationType="cubic"><CubicEaseInterpolator x1="0.42" y1="0" x2="0.58" y2="1"/></KeyFrameDouble><KeyFrameDouble frame="60" value="0.32" interpolationType="cubic"><CubicEaseInterpolator x1="0.42" y1="0" x2="0.58" y2="1"/></KeyFrameDouble></KeyedProperty></KeyedObject><KeyedObject objectId="0:25"><KeyedProperty property="rotation"><KeyFrameDouble frame="0" value="-0.32" interpolationType="cubic"><CubicEaseInterpolator x1="0.42" y1="0" x2="0.58" y2="1"/></KeyFrameDouble><KeyFrameDouble frame="30" value="0.32" interpolationType="cubic"><CubicEaseInterpolator x1="0.42" y1="0" x2="0.58" y2="1"/></KeyFrameDouble><KeyFrameDouble frame="60" value="-0.32" interpolationType="cubic"><CubicEaseInterpolator x1="0.42" y1="0" x2="0.58" y2="1"/></KeyFrameDouble></KeyedProperty></KeyedObject><KeyedObject objectId="0:26"><KeyedProperty property="rotation"><KeyFrameDouble frame="0" value="-0.32" interpolationType="cubic"><CubicEaseInterpolator x1="0.42" y1="0" x2="0.58" y2="1"/></KeyFrameDouble><KeyFrameDouble frame="30" value="0.32" interpolationType="cubic"><CubicEaseInterpolator x1="0.42" y1="0" x2="0.58" y2="1"/></KeyFrameDouble><KeyFrameDouble frame="60" value="-0.32" interpolationType="cubic"><CubicEaseInterpolator x1="0.42" y1="0" x2="0.58" y2="1"/></KeyFrameDouble></KeyedProperty></KeyedObject><KeyedObject objectId="0:21"><KeyedProperty property="y"><KeyFrameDouble frame="0" value="348.1" interpolationType="cubic"><CubicEaseInterpolator x1="0.42" y1="0" x2="0.58" y2="1"/></KeyFrameDouble><KeyFrameDouble frame="15" value="345.6" interpolationType="cubic"><CubicEaseInterpolator x1="0.42" y1="0" x2="0.58" y2="1"/></KeyFrameDouble><KeyFrameDouble frame="30" value="348.1" interpolationType="cubic"><CubicEaseInterpolator x1="0.42" y1="0" x2="0.58" y2="1"/></KeyFrameDouble><KeyFrameDouble frame="45" value="345.6" interpolationType="cubic"><CubicEaseInterpolator x1="0.42" y1="0" x2="0.58" y2="1"/></KeyFrameDouble><KeyFrameDouble frame="60" value="348.1" interpolationType="cubic"><CubicEaseInterpolator x1="0.42" y1="0" x2="0.58" y2="1"/></KeyFrameDouble></KeyedProperty></KeyedObject><KeyedObject objectId="0:23"><KeyedProperty property="rotation"><KeyFrameDouble frame="0" value="-0.12" interpolationType="cubic"><CubicEaseInterpolator x1="0.42" y1="0" x2="0.58" y2="1"/></KeyFrameDouble><KeyFrameDouble frame="15" value="0.18" interpolationType="cubic"><CubicEaseInterpolator x1="0.42" y1="0" x2="0.58" y2="1"/></KeyFrameDouble><KeyFrameDouble frame="30" value="-0.12" interpolationType="cubic"><CubicEaseInterpolator x1="0.42" y1="0" x2="0.58" y2="1"/></KeyFrameDouble><KeyFrameDouble frame="45" value="0.18" interpolationType="cubic"><CubicEaseInterpolator x1="0.42" y1="0" x2="0.58" y2="1"/></KeyFrameDouble><KeyFrameDouble frame="60" value="-0.12" interpolationType="cubic"><CubicEaseInterpolator x1="0.42" y1="0" x2="0.58" y2="1"/></KeyFrameDouble></KeyedProperty></KeyedObject><KeyedObject objectId="0:22"><KeyedProperty property="rotation"><KeyFrameDouble frame="0" value="0" interpolationType="cubic"><CubicEaseInterpolator x1="0.42" y1="0" x2="0.58" y2="1"/></KeyFrameDouble><KeyFrameDouble frame="30" value="0.04" interpolationType="cubic"><CubicEaseInterpolator x1="0.42" y1="0" x2="0.58" y2="1"/></KeyFrameDouble><KeyFrameDouble frame="60" value="0" interpolationType="cubic"><CubicEaseInterpolator x1="0.42" y1="0" x2="0.58" y2="1"/></KeyFrameDouble></KeyedProperty></KeyedObject><KeyedObject objectId="0:28"><KeyedProperty property="rotation"><KeyFrameDouble frame="0" value="0" interpolationType="cubic"><CubicEaseInterpolator x1="0.42" y1="0" x2="0.58" y2="1"/></KeyFrameDouble><KeyFrameDouble frame="15" value="0.07" interpolationType="cubic"><CubicEaseInterpolator x1="0.42" y1="0" x2="0.58" y2="1"/></KeyFrameDouble><KeyFrameDouble frame="30" value="0" interpolationType="cubic"><CubicEaseInterpolator x1="0.42" y1="0" x2="0.58" y2="1"/></KeyFrameDouble><KeyFrameDouble frame="45" value="0.07" interpolationType="cubic"><CubicEaseInterpolator x1="0.42" y1="0" x2="0.58" y2="1"/></KeyFrameDouble><KeyFrameDouble frame="60" value="0" interpolationType="cubic"><CubicEaseInterpolator x1="0.42" y1="0" x2="0.58" y2="1"/></KeyFrameDouble></KeyedProperty></KeyedObject><KeyedObject objectId="0:29"><KeyedProperty property="rotation"><KeyFrameDouble frame="0" value="0" interpolationType="cubic"><CubicEaseInterpolator x1="0.42" y1="0" x2="0.58" y2="1"/></KeyFrameDouble><KeyFrameDouble frame="15" value="-0.07" interpolationType="cubic"><CubicEaseInterpolator x1="0.42" y1="0" x2="0.58" y2="1"/></KeyFrameDouble><KeyFrameDouble frame="30" value="0" interpolationType="cubic"><CubicEaseInterpolator x1="0.42" y1="0" x2="0.58" y2="1"/></KeyFrameDouble><KeyFrameDouble frame="45" value="-0.07" interpolationType="cubic"><CubicEaseInterpolator x1="0.42" y1="0" x2="0.58" y2="1"/></KeyFrameDouble><KeyFrameDouble frame="60" value="0" interpolationType="cubic"><CubicEaseInterpolator x1="0.42" y1="0" x2="0.58" y2="1"/></KeyFrameDouble></KeyedProperty></KeyedObject><KeyedObject objectId="0:20"><KeyedProperty property="y"><KeyFrameDouble frame="0" value="0" interpolationType="linear"/><KeyFrameDouble frame="60" value="0" interpolationType="linear"/></KeyedProperty></KeyedObject><KeyedObject objectId="0:30"><KeyedProperty property="scaleX"><KeyFrameDouble frame="0" value="1" interpolationType="linear"/><KeyFrameDouble frame="60" value="1" interpolationType="linear"/></KeyedProperty><KeyedProperty property="scaleY"><KeyFrameDouble frame="0" value="1" interpolationType="linear"/><KeyFrameDouble frame="60" value="1" interpolationType="linear"/></KeyedProperty></KeyedObject></LinearAnimation>
+<LinearAnimation name="Jump" loopValue="oneShot" duration="50" fps="60" id="0:43"><KeyedObject objectId="0:20"><KeyedProperty property="y"><KeyFrameDouble frame="0" value="-0.0" interpolationType="linear"/><KeyFrameDouble frame="4" value="-32.4" interpolationType="linear"/><KeyFrameDouble frame="8" value="-57.6" interpolationType="linear"/><KeyFrameDouble frame="12" value="-75.6" interpolationType="linear"/><KeyFrameDouble frame="16" value="-86.4" interpolationType="linear"/><KeyFrameDouble frame="20" value="-90.0" interpolationType="linear"/><KeyFrameDouble frame="24" value="-86.4" interpolationType="linear"/><KeyFrameDouble frame="28" value="-75.6" interpolationType="linear"/><KeyFrameDouble frame="32" value="-57.6" interpolationType="linear"/><KeyFrameDouble frame="36" value="-32.4" interpolationType="linear"/><KeyFrameDouble frame="40" value="-0.0" interpolationType="linear"/><KeyFrameDouble frame="45" value="-6" interpolationType="linear"/><KeyFrameDouble frame="50" value="0" interpolationType="linear"/></KeyedProperty></KeyedObject><KeyedObject objectId="0:21"><KeyedProperty property="y"><KeyFrameDouble frame="0" value="348.1" interpolationType="linear"/><KeyFrameDouble frame="50" value="348.1" interpolationType="linear"/></KeyedProperty></KeyedObject><KeyedObject objectId="0:27"><KeyedProperty property="rotation"><KeyFrameDouble frame="0" value="0" interpolationType="cubic"><CubicEaseInterpolator x1="0.42" y1="0" x2="0.58" y2="1"/></KeyFrameDouble><KeyFrameDouble frame="12" value="-0.75" interpolationType="cubic"><CubicEaseInterpolator x1="0.42" y1="0" x2="0.58" y2="1"/></KeyFrameDouble><KeyFrameDouble frame="34" value="-0.75" interpolationType="cubic"><CubicEaseInterpolator x1="0.42" y1="0" x2="0.58" y2="1"/></KeyFrameDouble><KeyFrameDouble frame="42" value="0" interpolationType="cubic"><CubicEaseInterpolator x1="0.42" y1="0" x2="0.58" y2="1"/></KeyFrameDouble><KeyFrameDouble frame="50" value="0" interpolationType="cubic"><CubicEaseInterpolator x1="0.42" y1="0" x2="0.58" y2="1"/></KeyFrameDouble></KeyedProperty></KeyedObject><KeyedObject objectId="0:25"><KeyedProperty property="rotation"><KeyFrameDouble frame="0" value="0" interpolationType="cubic"><CubicEaseInterpolator x1="0.42" y1="0" x2="0.58" y2="1"/></KeyFrameDouble><KeyFrameDouble frame="12" value="-0.75" interpolationType="cubic"><CubicEaseInterpolator x1="0.42" y1="0" x2="0.58" y2="1"/></KeyFrameDouble><KeyFrameDouble frame="34" value="-0.75" interpolationType="cubic"><CubicEaseInterpolator x1="0.42" y1="0" x2="0.58" y2="1"/></KeyFrameDouble><KeyFrameDouble frame="42" value="0" interpolationType="cubic"><CubicEaseInterpolator x1="0.42" y1="0" x2="0.58" y2="1"/></KeyFrameDouble><KeyFrameDouble frame="50" value="0" interpolationType="cubic"><CubicEaseInterpolator x1="0.42" y1="0" x2="0.58" y2="1"/></KeyFrameDouble></KeyedProperty></KeyedObject><KeyedObject objectId="0:26"><KeyedProperty property="rotation"><KeyFrameDouble frame="0" value="0" interpolationType="cubic"><CubicEaseInterpolator x1="0.42" y1="0" x2="0.58" y2="1"/></KeyFrameDouble><KeyFrameDouble frame="12" value="0.75" interpolationType="cubic"><CubicEaseInterpolator x1="0.42" y1="0" x2="0.58" y2="1"/></KeyFrameDouble><KeyFrameDouble frame="34" value="0.75" interpolationType="cubic"><CubicEaseInterpolator x1="0.42" y1="0" x2="0.58" y2="1"/></KeyFrameDouble><KeyFrameDouble frame="42" value="0" interpolationType="cubic"><CubicEaseInterpolator x1="0.42" y1="0" x2="0.58" y2="1"/></KeyFrameDouble><KeyFrameDouble frame="50" value="0" interpolationType="cubic"><CubicEaseInterpolator x1="0.42" y1="0" x2="0.58" y2="1"/></KeyFrameDouble></KeyedProperty></KeyedObject><KeyedObject objectId="0:24"><KeyedProperty property="rotation"><KeyFrameDouble frame="0" value="0" interpolationType="cubic"><CubicEaseInterpolator x1="0.42" y1="0" x2="0.58" y2="1"/></KeyFrameDouble><KeyFrameDouble frame="12" value="0.75" interpolationType="cubic"><CubicEaseInterpolator x1="0.42" y1="0" x2="0.58" y2="1"/></KeyFrameDouble><KeyFrameDouble frame="34" value="0.75" interpolationType="cubic"><CubicEaseInterpolator x1="0.42" y1="0" x2="0.58" y2="1"/></KeyFrameDouble><KeyFrameDouble frame="42" value="0" interpolationType="cubic"><CubicEaseInterpolator x1="0.42" y1="0" x2="0.58" y2="1"/></KeyFrameDouble><KeyFrameDouble frame="50" value="0" interpolationType="cubic"><CubicEaseInterpolator x1="0.42" y1="0" x2="0.58" y2="1"/></KeyFrameDouble></KeyedProperty></KeyedObject><KeyedObject objectId="0:23"><KeyedProperty property="rotation"><KeyFrameDouble frame="0" value="0" interpolationType="cubic"><CubicEaseInterpolator x1="0.42" y1="0" x2="0.58" y2="1"/></KeyFrameDouble><KeyFrameDouble frame="10" value="0.35" interpolationType="cubic"><CubicEaseInterpolator x1="0.42" y1="0" x2="0.58" y2="1"/></KeyFrameDouble><KeyFrameDouble frame="30" value="0.35" interpolationType="cubic"><CubicEaseInterpolator x1="0.42" y1="0" x2="0.58" y2="1"/></KeyFrameDouble><KeyFrameDouble frame="50" value="0" interpolationType="cubic"><CubicEaseInterpolator x1="0.42" y1="0" x2="0.58" y2="1"/></KeyFrameDouble></KeyedProperty></KeyedObject><KeyedObject objectId="0:22"><KeyedProperty property="rotation"><KeyFrameDouble frame="0" value="0" interpolationType="cubic"><CubicEaseInterpolator x1="0.42" y1="0" x2="0.58" y2="1"/></KeyFrameDouble><KeyFrameDouble frame="10" value="-0.08" interpolationType="cubic"><CubicEaseInterpolator x1="0.42" y1="0" x2="0.58" y2="1"/></KeyFrameDouble><KeyFrameDouble frame="30" value="-0.08" interpolationType="cubic"><CubicEaseInterpolator x1="0.42" y1="0" x2="0.58" y2="1"/></KeyFrameDouble><KeyFrameDouble frame="44" value="0.03" interpolationType="cubic"><CubicEaseInterpolator x1="0.42" y1="0" x2="0.58" y2="1"/></KeyFrameDouble><KeyFrameDouble frame="50" value="0" interpolationType="cubic"><CubicEaseInterpolator x1="0.42" y1="0" x2="0.58" y2="1"/></KeyFrameDouble></KeyedProperty></KeyedObject><KeyedObject objectId="0:28"><KeyedProperty property="rotation"><KeyFrameDouble frame="0" value="0" interpolationType="cubic"><CubicEaseInterpolator x1="0.42" y1="0" x2="0.58" y2="1"/></KeyFrameDouble><KeyFrameDouble frame="10" value="-0.12" interpolationType="cubic"><CubicEaseInterpolator x1="0.42" y1="0" x2="0.58" y2="1"/></KeyFrameDouble><KeyFrameDouble frame="24" value="0.5" interpolationType="cubic"><CubicEaseInterpolator x1="0.42" y1="0" x2="0.58" y2="1"/></KeyFrameDouble><KeyFrameDouble frame="38" value="0.35" interpolationType="cubic"><CubicEaseInterpolator x1="0.42" y1="0" x2="0.58" y2="1"/></KeyFrameDouble><KeyFrameDouble frame="44" value="-0.08" interpolationType="cubic"><CubicEaseInterpolator x1="0.42" y1="0" x2="0.58" y2="1"/></KeyFrameDouble><KeyFrameDouble frame="50" value="0" interpolationType="cubic"><CubicEaseInterpolator x1="0.42" y1="0" x2="0.58" y2="1"/></KeyFrameDouble></KeyedProperty></KeyedObject><KeyedObject objectId="0:29"><KeyedProperty property="rotation"><KeyFrameDouble frame="0" value="0" interpolationType="cubic"><CubicEaseInterpolator x1="0.42" y1="0" x2="0.58" y2="1"/></KeyFrameDouble><KeyFrameDouble frame="10" value="0.12" interpolationType="cubic"><CubicEaseInterpolator x1="0.42" y1="0" x2="0.58" y2="1"/></KeyFrameDouble><KeyFrameDouble frame="24" value="-0.5" interpolationType="cubic"><CubicEaseInterpolator x1="0.42" y1="0" x2="0.58" y2="1"/></KeyFrameDouble><KeyFrameDouble frame="38" value="-0.35" interpolationType="cubic"><CubicEaseInterpolator x1="0.42" y1="0" x2="0.58" y2="1"/></KeyFrameDouble><KeyFrameDouble frame="44" value="0.08" interpolationType="cubic"><CubicEaseInterpolator x1="0.42" y1="0" x2="0.58" y2="1"/></KeyFrameDouble><KeyFrameDouble frame="50" value="0" interpolationType="cubic"><CubicEaseInterpolator x1="0.42" y1="0" x2="0.58" y2="1"/></KeyFrameDouble></KeyedProperty></KeyedObject><KeyedObject objectId="0:30"><KeyedProperty property="scaleX"><KeyFrameDouble frame="0" value="1" interpolationType="linear"/><KeyFrameDouble frame="20" value="0.55" interpolationType="linear"/><KeyFrameDouble frame="40" value="1" interpolationType="linear"/><KeyFrameDouble frame="50" value="1" interpolationType="linear"/></KeyedProperty><KeyedProperty property="scaleY"><KeyFrameDouble frame="0" value="1" interpolationType="linear"/><KeyFrameDouble frame="20" value="0.55" interpolationType="linear"/><KeyFrameDouble frame="40" value="1" interpolationType="linear"/><KeyFrameDouble frame="50" value="1" interpolationType="linear"/></KeyedProperty></KeyedObject></LinearAnimation>
+<LinearAnimation name="City Scroll" loopValue="loop" duration="480" fps="60" id="0:40"><KeyedObject objectId="0:10"><KeyedProperty property="x"><KeyFrameDouble frame="0" value="0" interpolationType="linear"/><KeyFrameDouble frame="480" value="-240" interpolationType="linear"/></KeyedProperty></KeyedObject></LinearAnimation>
+<LinearAnimation name="Ground Scroll" loopValue="loop" duration="120" fps="60" id="0:41"><KeyedObject objectId="0:11"><KeyedProperty property="x"><KeyFrameDouble frame="0" value="0" interpolationType="linear"/><KeyFrameDouble frame="120" value="-120" interpolationType="linear"/></KeyedProperty></KeyedObject></LinearAnimation>
+</Artboard>
+<ViewModel defaultInstanceId="0:62" name="Puppy" id="0:60"><ViewModelPropertyTrigger name="jump" id="0:61"/><ViewModelInstance exports="true" name="Default" id="0:62"><ViewModelInstanceTrigger viewModelPropertyId="0:61"/></ViewModelInstance></ViewModel>
+</Rive>
