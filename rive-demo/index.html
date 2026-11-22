@@ -29,6 +29,9 @@
       top: max(16px, env(safe-area-inset-top));
       left: 50%;
       transform: translateX(-50%);
+      width: max-content;
+      max-width: calc(100vw - 32px);
+      text-align: center;
       padding: 8px 16px;
       border-radius: 999px;
       background: rgba(255, 255, 255, 0.85);
@@ -61,7 +64,7 @@
       canvas,
       autoplay: true,
       autoBind: true,
-      stateMachines: "Puppy",
+      stateMachine: "Puppy",
       layout: new rive.Layout({ fit: rive.Fit.Cover, alignment: rive.Alignment.Center }),
       onLoad: () => {
         puppy.resizeDrawingSurfaceToCanvas();
