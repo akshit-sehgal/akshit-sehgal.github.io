@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Puppy Walk · Rive Demo</title>
+  <style>
+    html, body {
+      margin: 0;
+      height: 100%;
+      overflow: hidden;
+      background: #bfe6ff;
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      /* the whole page is a tap target: no text selection or double-tap zoom */
+      user-select: none;
+      -webkit-user-select: none;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+      cursor: pointer;
+    }
+    canvas {
+      display: block;
+      width: 100vw;
+      height: 100vh;
+      height: 100dvh;
+    }
+    .hint {
+      position: fixed;
+      top: max(16px, env(safe-area-inset-top));
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.85);
+      color: #2b1d16;
+      font-size: 15px;
+      font-weight: 600;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+      pointer-events: none;
+      transition: opacity 0.6s ease;
+    }
+    .hint.hidden { opacity: 0; }
+  </style>
+</head>
+<body>
+  <canvas id="stage" aria-label="A cartoon puppy walking calmly along a city street. Tap anywhere to make it jump."></canvas>
+  <div class="hint" id="hint">Tap anywhere to make the puppy jump 🐾</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@rive-app/canvas@2.49.4/rive.js" integrity="sha384-ZXsTBqUuVDDifB83vIhfgIW3w46dT7kGpPVxHPg1kLktL48vB6GjOAFx4VYYB6Fd" crossorigin="anonymous"></script>
+  <script>
+    // puppy.riv is built from ./puppy/scene.rml with the Rive CLI.
+    const canvas = document.getElementById("stage");
+    const hint = document.getElementById("hint");
+    let jumpInput = null;
+
+    const puppy = new rive.Rive({
+      src: "puppy.riv",
+      canvas,
+      autoplay: true,
+      stateMachines: "Puppy",
+      layout: new rive.Layout({ fit: rive.Fit.Cover, alignment: rive.Alignment.Center }),
+      onLoad: () => {
+        puppy.resizeDrawingSurfaceToCanvas();
+        jumpInput = puppy.stateMachineInputs("Puppy").find((i) => i.name === "jump");
+      },
+    });
+
+    window.addEventListener("resize", () => puppy.resizeDrawingSurfaceToCanvas());
+
+    // Tap / click / key anywhere on the page fires the state machine's "jump" trigger.
+    function jump() {
+      if (jumpInput) jumpInput.fire();
+      hint.classList.add("hidden");
+    }
+    document.addEventListener("pointerdown", jump);
+    document.addEventListener("keydown", (e) => {
+      if (e.code === "Space" || e.code === "Enter") { e.preventDefault(); jump(); }
+    });
+  </script>
+</body>
+</html>
