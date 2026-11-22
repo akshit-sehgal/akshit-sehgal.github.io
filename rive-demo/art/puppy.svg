@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-130 -180 260 250" width="780" height="750">
+  <!--
+    Walking puppy, side-on with its head turned to the viewer.
+    Origin (0,0) is the centre of the torso; paws touch the ground at y=60.
+    Each animated part is a <g> whose transform is its pivot. The Rive
+    generator (puppy/generate_scene.py) converts this file with `rive svg`
+    and keys the groups by id: legBF legFF legBN legFN tail head earL earR.
+  -->
+  <defs>
+    <style>
+      .ink  { stroke: #5C3A21; stroke-width: 3.2; stroke-linejoin: round; stroke-linecap: round; }
+      .line { fill: none; stroke: #5C3A21; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+      .fur  { fill: #FFF4E0; }
+      .fur2 { fill: #F1DFC2; }
+      .orng { fill: #E99A4E; }
+    </style>
+  </defs>
+
+  <!-- far legs (behind everything, a shade darker) -->
+  <g id="legBF" transform="translate(-44 10)">
+    <path class="fur2 ink" d="M -11 -14 L -11 36 C -13 46 -7 50 3 50 C 14 50 18 45 15 37 L 13 -14 Z"/>
+    <path class="line" d="M 4 43 L 4 49 M 10 43 L 10 49"/>
+  </g>
+  <g id="legFF" transform="translate(24 10)">
+    <path class="fur2 ink" d="M -11 -14 L -11 36 C -13 46 -7 50 3 50 C 14 50 18 45 15 37 L 13 -14 Z"/>
+    <path class="line" d="M 4 43 L 4 49 M 10 43 L 10 49"/>
+  </g>
+
+  <!-- fluffy curled tail -->
+  <g id="tail" transform="translate(-50 -16)">
+    <path class="fur ink" d="M 8 6 C -6 4 -20 -6 -26 -20 C -32 -34 -30 -48 -20 -56 C -14 -61 -4 -62 2 -58 C -4 -56 -6 -52 -4 -48 C 2 -52 10 -50 12 -44 C 6 -44 2 -40 2 -36 C 6 -28 12 -18 14 -8 C 15 0 12 5 8 6 Z"/>
+    <path class="line" d="M -18 -40 C -16 -32 -10 -24 -4 -20"/>
+  </g>
+
+  <!-- near legs (behind the torso so they grow out of it) -->
+  <g id="legBN" transform="translate(-30 14)">
+    <path class="fur ink" d="M -12 -14 L -12 33 C -14 43 -8 47 3 47 C 15 47 19 42 16 34 L 14 -14 Z"/>
+    <path class="line" d="M 5 40 L 5 46 M 11 40 L 11 46"/>
+  </g>
+  <g id="legFN" transform="translate(38 14)">
+    <path class="fur ink" d="M -12 -14 L -12 33 C -14 43 -8 47 3 47 C 15 47 19 42 16 34 L 14 -14 Z"/>
+    <path class="line" d="M 5 40 L 5 46 M 11 40 L 11 46"/>
+  </g>
+
+  <!-- torso: fill, orange back spot, then the outline on top -->
+  <path class="fur" d="M -38 -31 C -10 -38 25 -36 42 -28 C 60 -18 62 14 48 28 C 30 38 -25 38 -44 28 C -62 18 -62 -22 -38 -31 Z"/>
+  <path class="orng" d="M -44 -24 C -30 -33 -8 -34 0 -24 C 6 -14 -4 -4 -18 -6 C -30 -8 -40 -2 -50 -6 C -52 -14 -50 -20 -44 -24 Z"/>
+  <path class="ink" fill="none" d="M -38 -31 C -10 -38 25 -36 42 -28 C 60 -18 62 14 48 28 C 30 38 -25 38 -44 28 C -62 18 -62 -22 -38 -31 Z"/>
+  <path class="line" d="M 44 2 C 47 7 47 12 44 16 M 36 8 C 38 12 38 16 36 19"/>
+
+  <!-- neck: its fill covers the torso's top line so neck and chest read as
+       one piece of fur; only the two sides are outlined -->
+  <path class="fur" d="M 20 -66 C 20 -52 19 -42 12 -35 C 28 -28 44 -23 56 -20 C 63 -32 67 -50 67 -66 Z"/>
+  <path class="line" style="stroke-width:3.2" d="M 20 -66 C 20 -52 19 -42 12 -35 M 67 -66 C 67 -48 63 -32 56 -20"/>
+
+  <!-- red collar and gold paw tag, around the neck -->
+  <path fill="#D9473A" class="ink" d="M 17 -49 C 32 -36 54 -36 70 -49 L 70 -40 C 54 -27 32 -27 17 -40 Z"/>
+  <path class="line" d="M 43 -32 L 43 -27"/>
+  <circle cx="43" cy="-19" r="8.5" fill="#F2B33D" class="ink"/>
+  <ellipse cx="43" cy="-17" rx="3" ry="2.4" fill="#8A5A2B"/>
+  <circle cx="39.5" cy="-21" r="1.5" fill="#8A5A2B"/>
+  <circle cx="43" cy="-22.5" r="1.5" fill="#8A5A2B"/>
+  <circle cx="46.5" cy="-21" r="1.5" fill="#8A5A2B"/>
+
+  <!-- head, turned to the viewer; pivots at its centre -->
+  <g id="head" transform="translate(46 -100)">
+    <!-- floppy ears hang from the top of the head, behind it -->
+    <g id="earL" transform="translate(-38 -34)">
+      <path class="orng ink" d="M 8 -6 C -12 -12 -34 2 -40 24 C -46 44 -40 62 -25 65 C -16 67 -10 61 -8 52 C -3 38 4 22 12 8 Z"/>
+      <path class="line" d="M -30 50 C -28 44 -26 38 -22 32"/>
+    </g>
+    <g id="earR" transform="translate(38 -34)">
+      <path class="orng ink" d="M -8 -6 C 12 -12 34 2 40 24 C 46 44 40 62 25 65 C 16 67 10 61 8 52 C 3 38 -4 22 -12 8 Z"/>
+      <path fill="#F4B6A6" d="M -2 0 C 8 -2 18 4 22 12 C 14 10 6 8 -2 8 Z"/>
+      <path class="line" d="M 30 50 C 28 44 26 38 22 32"/>
+    </g>
+
+    <!-- fluffy head: fill, eye patch, outline -->
+    <path class="fur" d="M -40 -36 C -32 -46 -22 -50 -14 -50 C -16 -56 -14 -60 -10 -62 C -9 -57 -6 -54 -2 -53 C -2 -60 2 -65 8 -66 C 6 -60 8 -55 12 -53 C 14 -58 18 -60 22 -60 C 20 -56 20 -53 22 -50 C 34 -48 42 -42 48 -30 C 58 -12 58 12 50 26 L 55 32 L 46 34 L 48 41 L 38 40 C 26 50 -26 50 -38 40 L -48 41 L -46 34 L -55 32 L -50 26 C -58 12 -58 -14 -40 -36 Z"/>
+    <path class="orng" d="M -42 -30 C -28 -42 -8 -40 -2 -26 C 2 -12 -4 6 -18 10 C -32 14 -46 6 -51 -6 C -52 -16 -48 -24 -42 -30 Z"/>
+    <path class="ink" fill="none" d="M -40 -36 C -32 -46 -22 -50 -14 -50 C -16 -56 -14 -60 -10 -62 C -9 -57 -6 -54 -2 -53 C -2 -60 2 -65 8 -66 C 6 -60 8 -55 12 -53 C 14 -58 18 -60 22 -60 C 20 -56 20 -53 22 -50 C 34 -48 42 -42 48 -30 C 58 -12 58 12 50 26 L 55 32 L 46 34 L 48 41 L 38 40 C 26 50 -26 50 -38 40 L -48 41 L -46 34 L -55 32 L -50 26 C -58 12 -58 -14 -40 -36 Z"/>
+    <path class="line" d="M -6 -48 C -2 -45 3 -45 7 -47"/>
+
+    <!-- face -->
+    <g transform="translate(4 0)">
+      <path class="line" d="M -33 -21 C -29 -27 -22 -28 -17 -24 M 14 -25 C 19 -29 26 -28 29 -22"/>
+      <ellipse cx="-22" cy="-6" rx="8.5" ry="9.5" fill="#3B2416"/>
+      <ellipse cx="22" cy="-6" rx="8.5" ry="9.5" fill="#3B2416"/>
+      <circle cx="-19" cy="-9.5" r="3" fill="#FFFFFF"/>
+      <circle cx="25" cy="-9.5" r="3" fill="#FFFFFF"/>
+      <!-- open smile with tongue -->
+      <path fill="#7A2E2A" d="M -9 16 C -9 26 9 26 9 16 Z"/>
+      <path fill="#F08C8C" class="ink" d="M -7 18 C -9 31 -4 37 1 37 C 7 37 10 31 8 18 Z"/>
+      <path class="line" style="stroke:#D86A6A" d="M 0.5 23 L 0.5 31"/>
+      <path class="line" d="M -17 13 C -13 21 -4 21 0 13 C 4 21 13 21 17 13"/>
+      <path fill="#4A2C1D" d="M -9 4 C -9 -2 9 -2 9 4 C 9 9 4 12 0 12 C -4 12 -9 9 -9 4 Z"/>
+      <ellipse cx="-3" cy="3" rx="3" ry="1.6" fill="#8C6A58"/>
+      <!-- blush -->
+      <path class="line" style="stroke:#F2A09A" d="M -41 14 L -38 9 M -36 15 L -33 10 M -31 16 L -28 11 M 28 16 L 31 11 M 33 15 L 36 10 M 38 14 L 41 9"/>
+    </g>
+  </g>
+</svg>

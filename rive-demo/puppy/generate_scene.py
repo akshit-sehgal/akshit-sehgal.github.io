@@ -11,11 +11,22 @@ Build and check the .riv with the Rive CLI (https://rive.app/docs/cli):
 The scene is written as code because the street repeats: buildings, sidewalk
 seams and lane dashes are tiled in loops and scrolled to make the puppy walk.
 
+The puppy itself is drawn in ../art/puppy.svg. This script converts it with
+`rive svg` (set RIVE to the CLI's path if `rive` is not on PATH) and gives the
+SVG groups (legs, tail, head, ears) ids so the animations can key them.
+
 Rive draws the FIRST child of a parent on top. The lists below are written
 back-to-front (sky first, puppy last) for readability and `stack()` reverses
-them when the RML is emitted.
+them when the RML is emitted. `rive svg` already reverses the SVG's order.
 """
+import os
+import subprocess
+import tempfile
+import xml.etree.ElementTree as ET
 from pathlib import Path
+
+HERE = Path(__file__).resolve().parent
+PUPPY_SVG = HERE.parent / "art" / "puppy.svg"
 
 W, H = 600, 600
 GROUND_Y = 400          # where the puppy's paws touch the sidewalk
@@ -82,7 +93,7 @@ ID_ARTBOARD, ID_STYLE, ID_SM = "0:2", "0:3", "0:4"
 ID_CITY, ID_GROUND = "0:10", "0:11"
 ID_PUPPY, ID_BODY, ID_HEAD, ID_TAIL = "0:20", "0:21", "0:22", "0:23"
 ID_LEG_BF, ID_LEG_FF, ID_LEG_BN, ID_LEG_FN = "0:24", "0:25", "0:26", "0:27"
-ID_EAR_N, ID_EAR_F, ID_SHADOW = "0:28", "0:29", "0:30"
+ID_EAR_L, ID_EAR_R, ID_SHADOW = "0:28", "0:29", "0:30"
 ID_ANIM_CITY, ID_ANIM_GROUND, ID_ANIM_WALK, ID_ANIM_JUMP = "0:40", "0:41", "0:42", "0:43"
 ID_ST_WALK, ID_ST_JUMP = "0:50", "0:51"
 # view model: one fire-once "jump" trigger the host page (or a tap) can fire
@@ -130,38 +141,44 @@ scenery = [
 ]
 
 # --------------------------------------------------------------------- puppy
-TAN, TAN_DARK, CREAM, BROWN, INK = "FFF2C48D", "FFD9A66B", "FFFBE6C8", "FFB5733A", "FF2B1D16"
+# SVG group id -> RML id, for the parts the animations key.
+PART_IDS = {
+    "legBF": ID_LEG_BF, "legFF": ID_LEG_FF, "legBN": ID_LEG_BN, "legFN": ID_LEG_FN,
+    "tail": ID_TAIL, "head": ID_HEAD, "earL": ID_EAR_L, "earR": ID_EAR_R,
+}
 
-head = stack(
-    ellipse("Ear Far", 18, -16, 26, 46, BROWN, rot=-0.35, sid=ID_EAR_F),
-    ellipse("Head", 0, 0, 84, 76, TAN),
-    ellipse("Snout", 26, 14, 46, 32, CREAM),
-    ellipse("Tongue", 32, 31, 10, 12, "FFFF7A8A"),
-    ellipse("Nose", 46, 6, 18, 13, INK),
-    ellipse("Eye", 12, -8, 11, 14, INK),
-    ellipse("Eye Shine", 14, -11, 4, 4, "FFFFFFFF"),
-    ellipse("Cheek", 6, 12, 15, 9, "88FF8FA3"),
-    ellipse("Ear Near", -20, -6, 28, 50, BROWN, rot=0.35, sid=ID_EAR_N),
-)
 
-body = stack(
-    rect("Back Leg Far", -40, 15, 15, 40, TAN_DARK, r=7, origin_y=0, sid=ID_LEG_BF),
-    rect("Front Leg Far", 35, 15, 15, 40, TAN_DARK, r=7, origin_y=0, sid=ID_LEG_FF),
-    rect("Tail", -60, -14, 12, 38, TAN, r=6, rot=-0.6, origin_y=1, sid=ID_TAIL),
-    ellipse("Torso", 0, 0, 130, 72, TAN),
-    ellipse("Belly", 6, 18, 80, 30, CREAM),
-    ellipse("Spot", -30, -14, 36, 26, "FFC98B4E"),
-    rect("Back Leg Near", -30, 18, 17, 42, TAN, r=8, origin_y=0, sid=ID_LEG_BN),
-    rect("Front Leg Near", 45, 18, 17, 42, TAN, r=8, origin_y=0, sid=ID_LEG_FN),
-    rect("Collar", 50, -18, 10, 46, "FFE5484D", r=5, rot=0.3),
-    ellipse("Tag", 57, 8, 12, 12, "FFFFC83D"),
-    f'<Node x="70" y="-40" name="Head Group" id="{ID_HEAD}">{head}</Node>',
-)
+def puppy_art():
+    """Convert ../art/puppy.svg with `rive svg` and return its shapes as RML."""
+    rive = os.environ.get("RIVE", "rive")
+    with tempfile.TemporaryDirectory() as tmp:
+        out = Path(tmp) / "puppy.rml"
+        subprocess.run([rive, "svg", str(PUPPY_SVG), f"--out={out}", "--force", "--quiet"], check=True)
+        root = ET.parse(out).getroot()
+    viewbox = root.find("./Artboard/Node[@name='ViewBox']")
+    found = set()
+    for node in viewbox.iter("Node"):
+        name = node.get("name")
+        if name in PART_IDS:
+            node.set("id", PART_IDS[name])
+            found.add(name)
+    missing = set(PART_IDS) - found
+    if missing:
+        raise SystemExit(f"puppy.svg is missing groups: {sorted(missing)}")
+    # The SVG's origin is the centre of the torso, so its shapes go straight
+    # into the Body node; the ViewBox offset is dropped.
+    return "".join(ET.tostring(child, encoding="unicode") for child in viewbox)
+
+
+PAW_Y = 61              # paws touch the ground this far below the torso centre (SVG units)
+BODY_SCALE = 0.85
+BODY_Y = round(GROUND_Y - PAW_Y * BODY_SCALE, 1)
 
 puppy = [
-    ellipse("Shadow", PUPPY_X, GROUND_Y + 2, 150, 16, "30000000", sid=ID_SHADOW),
+    ellipse("Shadow", PUPPY_X + 8, GROUND_Y + 1, 140, 14, "30000000", sid=ID_SHADOW),
     f'<Node x="{PUPPY_X}" y="0" name="Puppy" id="{ID_PUPPY}">'
-    f'<Node x="0" y="340" name="Body" id="{ID_BODY}">{body}</Node></Node>',
+    f'<Node x="0" y="{BODY_Y}" scaleX="{BODY_SCALE}" scaleY="{BODY_SCALE}" name="Body" id="{ID_BODY}">'
+    f'{puppy_art()}</Node></Node>',
 ]
 
 # ---------------------------------------------------------------- animations
@@ -173,31 +190,33 @@ walk = (f'<LinearAnimation name="Walk" loopValue="loop" duration="60" fps="60" i
         + keyed(ID_LEG_BF, keys("rotation", leg_a, EASE_IN_OUT))
         + keyed(ID_LEG_FF, keys("rotation", leg_b, EASE_IN_OUT))
         + keyed(ID_LEG_BN, keys("rotation", leg_b, EASE_IN_OUT))
-        + keyed(ID_BODY, keys("y", [(0, 340), (15, 337), (30, 340), (45, 337), (60, 340)], EASE_IN_OUT))
-        + keyed(ID_TAIL, keys("rotation", [(0, -0.45), (15, -0.95), (30, -0.45), (45, -0.95), (60, -0.45)], EASE_IN_OUT))
-        + keyed(ID_HEAD, keys("rotation", [(0, 0), (30, 0.05), (60, 0)], EASE_IN_OUT))
-        + keyed(ID_EAR_N, keys("rotation", [(0, 0.35), (15, 0.45), (30, 0.35), (45, 0.45), (60, 0.35)], EASE_IN_OUT))
+        + keyed(ID_BODY, keys("y", [(0, BODY_Y), (15, BODY_Y - 2.5), (30, BODY_Y), (45, BODY_Y - 2.5), (60, BODY_Y)], EASE_IN_OUT))
+        + keyed(ID_TAIL, keys("rotation", [(0, -0.12), (15, 0.18), (30, -0.12), (45, 0.18), (60, -0.12)], EASE_IN_OUT))
+        + keyed(ID_HEAD, keys("rotation", [(0, 0), (30, 0.04), (60, 0)], EASE_IN_OUT))
+        + keyed(ID_EAR_L, keys("rotation", [(0, 0), (15, 0.07), (30, 0), (45, 0.07), (60, 0)], EASE_IN_OUT))
+        + keyed(ID_EAR_R, keys("rotation", [(0, 0), (15, -0.07), (30, 0), (45, -0.07), (60, 0)], EASE_IN_OUT))
         # pin what Jump moves, so blending back from a jump settles cleanly
         + keyed(ID_PUPPY, keys("y", [(0, 0), (60, 0)]))
         + keyed(ID_SHADOW, keys("scaleX", [(0, 1), (60, 1)]), keys("scaleY", [(0, 1), (60, 1)]))
         + '</LinearAnimation>')
 
-# A parabolic hop: up 110px and back down in 40 frames, then a small bounce.
-arc = [(f, round(-110 * (1 - ((f - 20) / 20) ** 2), 1)) for f in range(0, 41, 4)]
+# A parabolic hop: up 90px and back down in 40 frames, then a small bounce.
+arc = [(f, round(-90 * (1 - ((f - 20) / 20) ** 2), 1)) for f in range(0, 41, 4)]
 hop = arc + [(45, -6), (50, 0)]
 shadow = [(0, 1), (20, 0.55), (40, 1), (50, 1)]
 tuck = 0.75
 jump = (f'<LinearAnimation name="Jump" loopValue="oneShot" duration="50" fps="60" id="{ID_ANIM_JUMP}">'
         + keyed(ID_PUPPY, keys("y", hop))
-        + keyed(ID_BODY, keys("y", [(0, 340), (50, 340)]))
+        + keyed(ID_BODY, keys("y", [(0, BODY_Y), (50, BODY_Y)]))
         + keyed(ID_LEG_FN, keys("rotation", [(0, 0), (12, -tuck), (34, -tuck), (42, 0), (50, 0)], EASE_IN_OUT))
         + keyed(ID_LEG_FF, keys("rotation", [(0, 0), (12, -tuck), (34, -tuck), (42, 0), (50, 0)], EASE_IN_OUT))
         + keyed(ID_LEG_BN, keys("rotation", [(0, 0), (12, tuck), (34, tuck), (42, 0), (50, 0)], EASE_IN_OUT))
         + keyed(ID_LEG_BF, keys("rotation", [(0, 0), (12, tuck), (34, tuck), (42, 0), (50, 0)], EASE_IN_OUT))
-        + keyed(ID_TAIL, keys("rotation", [(0, -0.5), (10, -1.3), (30, -1.3), (50, -0.5)], EASE_IN_OUT))
-        + keyed(ID_HEAD, keys("rotation", [(0, 0), (10, -0.12), (30, -0.12), (44, 0.04), (50, 0)], EASE_IN_OUT))
-        + keyed(ID_EAR_N, keys("rotation", [(0, 0.35), (16, -0.5), (32, -0.3), (42, 0.6), (50, 0.35)], EASE_IN_OUT))
-        + keyed(ID_EAR_F, keys("rotation", [(0, -0.35), (16, -1.0), (32, -0.8), (42, -0.2), (50, -0.35)], EASE_IN_OUT))
+        + keyed(ID_TAIL, keys("rotation", [(0, 0), (10, 0.35), (30, 0.35), (50, 0)], EASE_IN_OUT))
+        + keyed(ID_HEAD, keys("rotation", [(0, 0), (10, -0.08), (30, -0.08), (44, 0.03), (50, 0)], EASE_IN_OUT))
+        # ears droop on take-off, float up at the top of the hop, flop on landing
+        + keyed(ID_EAR_L, keys("rotation", [(0, 0), (10, -0.12), (24, 0.5), (38, 0.35), (44, -0.08), (50, 0)], EASE_IN_OUT))
+        + keyed(ID_EAR_R, keys("rotation", [(0, 0), (10, 0.12), (24, -0.5), (38, -0.35), (44, 0.08), (50, 0)], EASE_IN_OUT))
         + keyed(ID_SHADOW, keys("scaleX", shadow), keys("scaleY", shadow))
         + '</LinearAnimation>')
 
