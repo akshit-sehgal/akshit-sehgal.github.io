@@ -20,6 +20,7 @@ back-to-front (sky first, puppy last) for readability and `stack()` reverses
 them when the RML is emitted. `rive svg` already reverses the SVG's order.
 """
 import os
+import re
 import subprocess
 import tempfile
 import xml.etree.ElementTree as ET
@@ -94,6 +95,7 @@ ID_CITY, ID_GROUND = "0:10", "0:11"
 ID_PUPPY, ID_BODY, ID_HEAD, ID_TAIL = "0:20", "0:21", "0:22", "0:23"
 ID_LEG_BF, ID_LEG_FF, ID_LEG_BN, ID_LEG_FN = "0:24", "0:25", "0:26", "0:27"
 ID_EAR_L, ID_EAR_R, ID_SHADOW = "0:28", "0:29", "0:30"
+ID_PAW_FN, ID_PADS_FN = "0:31", "0:32"
 ID_ANIM_CITY, ID_ANIM_GROUND, ID_ANIM_WALK, ID_ANIM_JUMP = "0:40", "0:41", "0:42", "0:43"
 ID_ST_WALK, ID_ST_JUMP = "0:50", "0:51"
 # view model: one fire-once "jump" trigger the host page (or a tap) can fire
@@ -144,6 +146,7 @@ scenery = [
 # SVG group id -> RML id, for the parts the animations key.
 PART_IDS = {
     "legBF": ID_LEG_BF, "legFF": ID_LEG_FF, "legBN": ID_LEG_BN, "legFN": ID_LEG_FN,
+    "pawFN": ID_PAW_FN, "padsFN": ID_PADS_FN,
     "tail": ID_TAIL, "head": ID_HEAD, "earL": ID_EAR_L, "earR": ID_EAR_R,
 }
 
@@ -155,7 +158,12 @@ def puppy_art():
         out = Path(tmp) / "puppy.rml"
         subprocess.run([rive, "svg", str(PUPPY_SVG), f"--out={out}", "--force", "--quiet"], check=True)
         root = ET.parse(out).getroot()
-    viewbox = root.find("./Artboard/Node[@name='ViewBox']")
+    # `rive svg` wraps the drawing in a "ViewBox" node only when the viewBox
+    # is offset from 0,0; otherwise the shapes sit directly in the artboard.
+    artboard = root.find("./Artboard")
+    viewbox = artboard.find("./Node[@name='ViewBox']")
+    if viewbox is None:
+        viewbox = artboard
     found = set()
     for node in viewbox.iter("Node"):
         name = node.get("name")
@@ -165,32 +173,44 @@ def puppy_art():
     missing = set(PART_IDS) - found
     if missing:
         raise SystemExit(f"puppy.svg is missing groups: {sorted(missing)}")
-    # The SVG's origin is the centre of the torso, so its shapes go straight
-    # into the Body node; the ViewBox offset is dropped.
-    return "".join(ET.tostring(child, encoding="unicode") for child in viewbox)
+    # The SVG is drawn in the reference's pixel space; shift it so ART_ORIGIN
+    # (the middle of the torso) sits at the Body node's origin.
+    shapes = "".join(ET.tostring(child, encoding="unicode") for child in viewbox)
+    return f'<Node x="{-ART_ORIGIN[0]}" y="{-ART_ORIGIN[1]}" name="Art">{shapes}</Node>'
 
 
-PAW_Y = 61              # paws touch the ground this far below the torso centre (SVG units)
-BODY_SCALE = 0.85
+ART_ORIGIN = (500, 600)  # SVG point placed at the Body node's origin
+
+
+PAW_Y = 262             # the ground (SVG y=862) is this far below ART_ORIGIN, in SVG units
+BODY_SCALE = 0.235
 BODY_Y = round(GROUND_Y - PAW_Y * BODY_SCALE, 1)
 
 puppy = [
-    ellipse("Shadow", PUPPY_X + 8, GROUND_Y + 1, 140, 14, "30000000", sid=ID_SHADOW),
+    ellipse("Shadow", PUPPY_X - 5, GROUND_Y + 1, 200, 14, "30000000", sid=ID_SHADOW),
     f'<Node x="{PUPPY_X}" y="0" name="Puppy" id="{ID_PUPPY}">'
     f'<Node x="0" y="{BODY_Y}" scaleX="{BODY_SCALE}" scaleY="{BODY_SCALE}" name="Body" id="{ID_BODY}">'
     f'{puppy_art()}</Node></Node>',
 ]
 
 # ---------------------------------------------------------------- animations
-SWING = 0.32
-leg_a = [(0, SWING), (30, -SWING), (60, SWING)]
-leg_b = [(0, -SWING), (30, SWING), (60, -SWING)]
+# Rotation 0 is the reference's stride (front-near paw lifted forward, back-near
+# leg stretched back). Diagonal pairs swing together: the lifted front leg with
+# the far back leg, the planted front leg with the near back leg.
+leg_fn = [(0, 0), (30, 1.15), (60, 0)]
+leg_bf = [(0, 0), (30, 0.85), (60, 0)]
+leg_ff = [(0, 0), (30, -0.85), (60, 0)]
+leg_bn = [(0, 0), (30, -0.95), (60, 0)]
+paw_fn = [(0, 0), (22, 0.35), (30, 0.45), (44, 0.25), (60, 0)]   # flexes while lifted
+pads_fn = [(0, 1), (10, 1), (18, 0), (50, 0), (58, 1), (60, 1)]  # sole shows only while lifted
 walk = (f'<LinearAnimation name="Walk" loopValue="loop" duration="60" fps="60" id="{ID_ANIM_WALK}">'
-        + keyed(ID_LEG_FN, keys("rotation", leg_a, EASE_IN_OUT))
-        + keyed(ID_LEG_BF, keys("rotation", leg_a, EASE_IN_OUT))
-        + keyed(ID_LEG_FF, keys("rotation", leg_b, EASE_IN_OUT))
-        + keyed(ID_LEG_BN, keys("rotation", leg_b, EASE_IN_OUT))
-        + keyed(ID_BODY, keys("y", [(0, BODY_Y), (15, BODY_Y - 2.5), (30, BODY_Y), (45, BODY_Y - 2.5), (60, BODY_Y)], EASE_IN_OUT))
+        + keyed(ID_LEG_FN, keys("rotation", leg_fn, EASE_IN_OUT))
+        + keyed(ID_LEG_BF, keys("rotation", leg_bf, EASE_IN_OUT))
+        + keyed(ID_LEG_FF, keys("rotation", leg_ff, EASE_IN_OUT))
+        + keyed(ID_LEG_BN, keys("rotation", leg_bn, EASE_IN_OUT))
+        + keyed(ID_PAW_FN, keys("rotation", paw_fn, EASE_IN_OUT))
+        + keyed(ID_PADS_FN, keys("opacity", pads_fn))
+        + keyed(ID_BODY, keys("y", [(0, BODY_Y), (15, BODY_Y - 3), (30, BODY_Y), (45, BODY_Y - 3), (60, BODY_Y)], EASE_IN_OUT))
         + keyed(ID_TAIL, keys("rotation", [(0, -0.12), (15, 0.18), (30, -0.12), (45, 0.18), (60, -0.12)], EASE_IN_OUT))
         + keyed(ID_HEAD, keys("rotation", [(0, 0), (30, 0.04), (60, 0)], EASE_IN_OUT))
         + keyed(ID_EAR_L, keys("rotation", [(0, 0), (15, 0.07), (30, 0), (45, 0.07), (60, 0)], EASE_IN_OUT))
@@ -200,18 +220,26 @@ walk = (f'<LinearAnimation name="Walk" loopValue="loop" duration="60" fps="60" i
         + keyed(ID_SHADOW, keys("scaleX", [(0, 1), (60, 1)]), keys("scaleY", [(0, 1), (60, 1)]))
         + '</LinearAnimation>')
 
+# The walk keys above are authored on a 60-frame cycle; stretch them to
+# WALK_FRAMES so the stride is calm and the paws keep pace with the ground.
+WALK_FRAMES = 84        # 1.4 s per step cycle
+walk = re.sub(r'frame="(\d+)"', lambda m: f'frame="{round(int(m.group(1)) * WALK_FRAMES / 60)}"', walk)
+walk = walk.replace('duration="60"', f'duration="{WALK_FRAMES}"', 1)
+
 # A parabolic hop: up 90px and back down in 40 frames, then a small bounce.
 arc = [(f, round(-90 * (1 - ((f - 20) / 20) ** 2), 1)) for f in range(0, 41, 4)]
 hop = arc + [(45, -6), (50, 0)]
 shadow = [(0, 1), (20, 0.55), (40, 1), (50, 1)]
-tuck = 0.75
 jump = (f'<LinearAnimation name="Jump" loopValue="oneShot" duration="50" fps="60" id="{ID_ANIM_JUMP}">'
         + keyed(ID_PUPPY, keys("y", hop))
         + keyed(ID_BODY, keys("y", [(0, BODY_Y), (50, BODY_Y)]))
-        + keyed(ID_LEG_FN, keys("rotation", [(0, 0), (12, -tuck), (34, -tuck), (42, 0), (50, 0)], EASE_IN_OUT))
-        + keyed(ID_LEG_FF, keys("rotation", [(0, 0), (12, -tuck), (34, -tuck), (42, 0), (50, 0)], EASE_IN_OUT))
-        + keyed(ID_LEG_BN, keys("rotation", [(0, 0), (12, tuck), (34, tuck), (42, 0), (50, 0)], EASE_IN_OUT))
-        + keyed(ID_LEG_BF, keys("rotation", [(0, 0), (12, tuck), (34, tuck), (42, 0), (50, 0)], EASE_IN_OUT))
+        # front legs reach forward, back legs kick back, lifted paw stays flexed
+        + keyed(ID_LEG_FN, keys("rotation", [(0, 0), (12, -0.15), (34, -0.15), (42, 0), (50, 0)], EASE_IN_OUT))
+        + keyed(ID_LEG_FF, keys("rotation", [(0, 0), (12, -0.75), (34, -0.75), (42, 0), (50, 0)], EASE_IN_OUT))
+        + keyed(ID_LEG_BN, keys("rotation", [(0, 0), (12, 0.3), (34, 0.3), (42, 0), (50, 0)], EASE_IN_OUT))
+        + keyed(ID_LEG_BF, keys("rotation", [(0, 0), (12, 0.65), (34, 0.65), (42, 0), (50, 0)], EASE_IN_OUT))
+        + keyed(ID_PAW_FN, keys("rotation", [(0, 0), (50, 0)]))
+        + keyed(ID_PADS_FN, keys("opacity", [(0, 1), (50, 1)]))
         + keyed(ID_TAIL, keys("rotation", [(0, 0), (10, 0.35), (30, 0.35), (50, 0)], EASE_IN_OUT))
         + keyed(ID_HEAD, keys("rotation", [(0, 0), (10, -0.08), (30, -0.08), (44, 0.03), (50, 0)], EASE_IN_OUT))
         # ears droop on take-off, float up at the top of the hop, flop on landing
@@ -220,10 +248,12 @@ jump = (f'<LinearAnimation name="Jump" loopValue="oneShot" duration="50" fps="60
         + keyed(ID_SHADOW, keys("scaleX", shadow), keys("scaleY", shadow))
         + '</LinearAnimation>')
 
-city_anim = (f'<LinearAnimation name="City Scroll" loopValue="loop" duration="480" fps="60" id="{ID_ANIM_CITY}">'
-             + keyed(ID_CITY, keys("x", [(0, 0), (480, -240)])) + '</LinearAnimation>')
-ground_anim = (f'<LinearAnimation name="Ground Scroll" loopValue="loop" duration="120" fps="60" id="{ID_ANIM_GROUND}">'
-               + keyed(ID_GROUND, keys("x", [(0, 0), (120, -120)])) + '</LinearAnimation>')
+# The ground slides 120px (one dash/seam repeat) per step cycle, matching the
+# stride; the buildings move at half that speed.
+city_anim = (f'<LinearAnimation name="City Scroll" loopValue="loop" duration="{WALK_FRAMES * 4}" fps="60" id="{ID_ANIM_CITY}">'
+             + keyed(ID_CITY, keys("x", [(0, 0), (WALK_FRAMES * 4, -240)])) + '</LinearAnimation>')
+ground_anim = (f'<LinearAnimation name="Ground Scroll" loopValue="loop" duration="{WALK_FRAMES}" fps="60" id="{ID_ANIM_GROUND}">'
+               + keyed(ID_GROUND, keys("x", [(0, 0), (WALK_FRAMES, -120)])) + '</LinearAnimation>')
 
 # ------------------------------------------------------------- state machine
 
